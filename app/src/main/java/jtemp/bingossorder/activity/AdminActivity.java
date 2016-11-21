@@ -15,7 +15,7 @@ import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.bingossorder.event.AppEventListener;
 import jtemp.bingossorder.fragment.AdFragment;
 import jtemp.bingossorder.fragment.AdminLoginFragment;
-import jtemp.bingossorder.fragment.AdminMgrMainFragment;
+import jtemp.bingossorder.fragment.AdminMainFragment;
 import jtemp.bingossorder.fragment.TitleFragment;
 
 /**
@@ -28,7 +28,7 @@ public class AdminActivity extends AppCompatActivity implements AppEventListener
     private TitleFragment titleFragment;
     private AdFragment adFragment;
     private AdminLoginFragment adminLoginFragment;
-    private AdminMgrMainFragment adminMgrMainFragment;
+    private AdminMainFragment adminMainFragment;
 
     private AppEventHandler eventHandler;
 
@@ -78,8 +78,8 @@ public class AdminActivity extends AppCompatActivity implements AppEventListener
         adminLoginFragment = new AdminLoginFragment();
         adminLoginFragment.setHandler(eventHandler);
 
-        adminMgrMainFragment = new AdminMgrMainFragment();
-        adminMgrMainFragment.setHandler(eventHandler);
+        adminMainFragment = new AdminMainFragment();
+        adminMainFragment.setHandler(eventHandler);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -102,7 +102,7 @@ public class AdminActivity extends AppCompatActivity implements AppEventListener
     }
 
     private void onAdminLoginSuccess() {
-        replaceContent(adminMgrMainFragment);
+        replaceContent(adminMainFragment);
         this.adminLogged = true;
     }
 

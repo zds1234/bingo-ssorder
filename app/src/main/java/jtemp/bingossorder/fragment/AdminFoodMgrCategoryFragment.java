@@ -14,10 +14,10 @@ import jtemp.bingossorder.utils.AndroidUtils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdminFoodCategoryMgrFragment extends Fragment implements View.OnClickListener {
+public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnClickListener {
 
 
-    public AdminFoodCategoryMgrFragment() {
+    public AdminFoodMgrCategoryFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class AdminFoodCategoryMgrFragment extends Fragment implements View.OnCli
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_admin_food_category_mgr, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_food_mgr_category, container, false);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

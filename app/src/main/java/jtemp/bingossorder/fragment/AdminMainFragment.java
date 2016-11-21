@@ -14,7 +14,7 @@ import jtemp.bingossorder.event.AppEventHandler;
 /**
  * 管理首页
  */
-public class AdminMgrMainFragment extends Fragment implements View.OnClickListener {
+public class AdminMainFragment extends Fragment implements View.OnClickListener {
 
     private AppEventHandler handler;
 
@@ -25,7 +25,7 @@ public class AdminMgrMainFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_admin_mgr_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_main, container, false);
 
         view.findViewById(R.id.button1).setOnClickListener(this);
         view.findViewById(R.id.button2).setOnClickListener(this);

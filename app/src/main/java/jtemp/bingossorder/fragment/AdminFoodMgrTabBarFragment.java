@@ -15,7 +15,7 @@ import jtemp.bingossorder.event.AppEventHandler;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdminFoodMgrPageBarFragment extends Fragment {
+public class AdminFoodMgrTabBarFragment extends Fragment {
 
     private AppEventHandler handler;
 
@@ -23,14 +23,14 @@ public class AdminFoodMgrPageBarFragment extends Fragment {
         this.handler = handler;
     }
 
-    public AdminFoodMgrPageBarFragment() {
+    public AdminFoodMgrTabBarFragment() {
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_admin_food_mgr_pagebar, container, false);
+        View view = inflater.inflate(R.layout.fragment_admin_food_mgr_tabbar, container, false);
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.tab);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
