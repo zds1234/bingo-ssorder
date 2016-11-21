@@ -1,6 +1,5 @@
 package jtemp.bingossorder.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -8,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +15,7 @@ import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.admin.AdminManager;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
+import jtemp.bingossorder.utils.AndroidUtils;
 
 /**
  * 登录
@@ -55,8 +54,7 @@ public class AdminLoginFragment extends Fragment {
         EditText password = (EditText) view.findViewById(R.id.password);
         if (AdminManager.isAdminPasswordValidate(password.getText().toString().trim())) {
             handler.sendMessage(AppEvent.EVENT_ADMIN_LOGIN_SUCCESS.toMessage(handler));
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            AndroidUtils.hideSoftKeyboard(getActivity());
         } else {
             Toast.makeText(getActivity().getApplicationContext(), "密码错误", Toast.LENGTH_SHORT).show();
         }

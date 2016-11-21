@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
+import jtemp.bingossorder.utils.AndroidUtils;
 
 /**
  * 首页头
@@ -61,7 +62,9 @@ public class TitleFragment extends Fragment {
     }
 
     private void showAdmin() {
-        if (!backVisible) {
+        if (backVisible) {
+            AndroidUtils.hideSoftKeyboard(getActivity());
+        } else {
             handler.sendMessage(AppEvent.EVENT_ADMIN_LOGIN_DISPLAY.toMessage(handler));
         }
     }

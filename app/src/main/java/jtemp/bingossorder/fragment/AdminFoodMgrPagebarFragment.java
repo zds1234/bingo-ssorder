@@ -42,6 +42,9 @@ public class AdminFoodMgrPageBarFragment extends Fragment {
     }
 
     private void tabChanged(int id) {
+        if (handler == null) {
+            return;
+        }
         switch (id) {
             case R.id.radioButton1:
                 handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_MGR_DISPLAY.toMessage(handler));
