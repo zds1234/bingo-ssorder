@@ -19,46 +19,47 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.admin.AdminFoodManager;
 import jtemp.bingossorder.entity.EntityFoodCategory;
-import jtemp.bingossorder.utils.BindView;
-import jtemp.bingossorder.utils.ViewBinder;
 
 /**
  * Created by ZMS on 2016/11/22.
  */
 
-public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickListener {
+public class AdminFoodMgrCategoryDialog extends Dialog {
 
     @BindView(R.id.food_category_add)
-    private Button categoryAdd;
+    Button categoryAdd;
 
     @BindView(R.id.food_category_delete)
-    private Button categoryDelete;
+    Button categoryDelete;
 
     @BindView(R.id.food_category_update)
-    private Button categoryUpdate;
+    Button categoryUpdate;
 
     @BindView(R.id.food_category_taocan)
-    private Switch categoryTaocanSwitch;
+    Switch categoryTaocanSwitch;
 
     @BindView(R.id.food_category_is_taocan)
-    private ViewGroup categoryIsTaocan;
+    ViewGroup categoryIsTaocan;
 
     @BindView(R.id.food_category_name)
-    private EditText categoryName;
+    EditText categoryName;
 
     @BindView(R.id.food_category_order)
-    private EditText categoryOrder;
+    EditText categoryOrder;
 
     @BindView(R.id.food_category_limit)
-    private EditText categoryLimit;
+    EditText categoryLimit;
 
     @BindView(R.id.food_category_taocan_relation)
-    private ViewGroup categoryRelation;
+    ViewGroup categoryRelation;
 
-    private EntityFoodCategory foodCategory;
+    EntityFoodCategory foodCategory;
 
     AdminFoodMgrCategoryFragment adminFoodMgrCategoryFragment;
 
@@ -66,11 +67,7 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
         super(context);
         this.adminFoodMgrCategoryFragment = adminFoodMgrCategoryFragment;
         setContentView(R.layout.food_category_mgr_dialog);
-        ViewBinder.bind(this, this);
-        categoryAdd.setOnClickListener(this);
-        categoryDelete.setOnClickListener(this);
-        categoryUpdate.setOnClickListener(this);
-        categoryTaocanSwitch.setOnClickListener(this);
+        ButterKnife.bind(this);
     }
 
     public void initContent(EntityFoodCategory foodCategory) {
@@ -113,7 +110,7 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
         switchTaoCan();
     }
 
-    @Override
+    @OnClick({R.id.food_category_taocan, R.id.food_category_add, R.id.food_category_delete, R.id.food_category_update})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.food_category_taocan:

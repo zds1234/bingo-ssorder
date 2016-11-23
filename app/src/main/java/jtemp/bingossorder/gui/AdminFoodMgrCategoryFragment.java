@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.admin.AdminFoodManager;
 import jtemp.bingossorder.entity.EntityFoodCategory;
@@ -20,7 +22,7 @@ import jtemp.bingossorder.utils.AndroidUtils;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnClickListener {
+public class AdminFoodMgrCategoryFragment extends Fragment {
 
     private FoodCategoryListAdapter foodCategoryListAdapter;
 
@@ -36,15 +38,10 @@ public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnCli
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_food_mgr_category, container, false);
         dialog = new AdminFoodMgrCategoryDialog(getActivity(), this);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AndroidUtils.hideSoftKeyboard(getActivity());
-            }
-        });
         initContent(view);
         initEvent(view);
         loadCategoryList();
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -60,8 +57,13 @@ public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnCli
     private void initEvent(View view) {
     }
 
-    @Override
+    @OnClick({R.id.food_mgr_category})
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.food_mgr_category:
+                AndroidUtils.hideSoftKeyboard(getActivity());
+                break;
+        }
     }
 
     public void showAddCategoryModel() {

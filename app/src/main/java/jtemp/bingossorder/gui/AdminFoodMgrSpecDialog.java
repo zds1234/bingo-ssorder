@@ -8,44 +8,43 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.admin.AdminFoodManager;
 import jtemp.bingossorder.entity.EntityFoodSpec;
 import jtemp.bingossorder.entity.FoodSpecType;
-import jtemp.bingossorder.utils.BindView;
-import jtemp.bingossorder.utils.ViewBinder;
 
 /**
  * Created by ZMS on 2016/11/23.
  */
 
-public class AdminFoodMgrSpecDialog extends Dialog implements View.OnClickListener {
+public class AdminFoodMgrSpecDialog extends Dialog {
 
     @BindView(R.id.food_spec_save)
-    private Button save;
+    Button save;
 
     @BindView(R.id.food_spec_delete)
-    private Button delete;
+    Button delete;
 
     @BindView(R.id.food_spec)
-    private RadioGroup spec;
+    RadioGroup spec;
 
     @BindView(R.id.food_spec_name)
-    private EditText name;
+    EditText name;
 
 
-    private AdminFoodMgrSpecFragment adminFoodMgrSpecFragment;
+    AdminFoodMgrSpecFragment adminFoodMgrSpecFragment;
 
     public AdminFoodMgrSpecDialog(AdminFoodMgrSpecFragment fragment, Context context) {
         super(context);
         this.adminFoodMgrSpecFragment = fragment;
         setContentView(R.layout.food_mgr_spec_dialog);
-        ViewBinder.bind(this, this);
-        save.setOnClickListener(this);
-        delete.setOnClickListener(this);
+        ButterKnife.bind(this);
     }
 
-    @Override
+    @OnClick({R.id.food_spec_save, R.id.food_spec_delete})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.food_spec_delete:

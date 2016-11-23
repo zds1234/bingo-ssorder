@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
@@ -16,7 +18,7 @@ import jtemp.bingossorder.utils.AndroidUtils;
 /**
  * 首页头
  */
-public class TitleFragment extends Fragment implements View.OnClickListener {
+public class TitleFragment extends Fragment {
 
     private AppEventHandler handler;
 
@@ -36,13 +38,11 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_title, container, false);
-        view.setOnClickListener(this);
-        view.findViewById(R.id.title_back).setOnClickListener(this);
-        view.findViewById(R.id.title_action).setOnClickListener(this);
         this.view = view;
         this.setBackVisible(this.backVisible);
         this.setActionVisible(this.actionVisible);
         this.setActionText(actionText);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -61,7 +61,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    @Override
+    @OnClick({R.id.title_action, R.id.title_back, R.id.title_bingo})
     public void onClick(View v) {
         if (v == null || !v.isShown() || handler == null) {
             return;

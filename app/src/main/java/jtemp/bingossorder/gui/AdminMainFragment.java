@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jtemp.bingossorder.activity.AdminFoodManagerActivity;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEventHandler;
@@ -27,18 +29,23 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_main, container, false);
 
-        view.findViewById(R.id.admin_main_button1).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button2).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button3).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button4).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button5).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button6).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button7).setOnClickListener(this);
-        view.findViewById(R.id.admin_main_button8).setOnClickListener(this);
+        ButterKnife.bind(this, view);
 
         return view;
     }
 
+    @OnClick(
+            {
+                    R.id.admin_main_button1,
+                    R.id.admin_main_button2,
+                    R.id.admin_main_button3,
+                    R.id.admin_main_button4,
+                    R.id.admin_main_button5,
+                    R.id.admin_main_button6,
+                    R.id.admin_main_button7,
+                    R.id.admin_main_button8
+            }
+    )
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
