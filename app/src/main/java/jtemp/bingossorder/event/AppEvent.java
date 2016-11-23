@@ -8,12 +8,17 @@ import android.os.Message;
  */
 
 public enum AppEvent {
-    EVENT_ADMIN_LOGIN_DISPLAY,
-    EVENT_ADMIN_LOGIN_SUCCESS,
-    EVENT_ADMIN_FOOD_MGR_DISPLAY,
-    EVENT_ADMIN_FOOD_CAT_MGR_DISPLAY,
-    EVENT_ADMIN_FOOD_SPEC_MGR_DISPLAY,
 
+    //title event
+    EVENT_TITLE_BINGO_CLICKED,
+    EVENT_TITLE_BACK_CLICKED,
+    EVENT_TITLE_ACTION_CLICKED,
+
+    //login
+    EVENT_ADMIN_LOGIN_SUCCESS,//登录成功
+
+    //菜品管理器切换TAB
+    EVENT_ADMIN_FOOD_MGR_SWITCH_TAB,
     //
     ;
 

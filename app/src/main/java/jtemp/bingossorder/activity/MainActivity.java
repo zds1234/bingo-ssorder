@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements AppEventListener 
     public void handleEvent(Message message) {
         AppEvent event = AppEvent.values()[message.what];
         switch (event) {
-            case EVENT_ADMIN_LOGIN_DISPLAY:
+            case EVENT_TITLE_BINGO_CLICKED:
                 Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
                 startActivity(intent);
                 break;

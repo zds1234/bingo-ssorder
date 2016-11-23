@@ -17,6 +17,7 @@ import jtemp.bingossorder.fragment.AdFragment;
 import jtemp.bingossorder.fragment.AdminLoginFragment;
 import jtemp.bingossorder.fragment.AdminMainFragment;
 import jtemp.bingossorder.fragment.TitleFragment;
+import jtemp.bingossorder.utils.AndroidUtils;
 
 /**
  * 管理界面
@@ -70,14 +71,22 @@ public class AdminActivity extends AppCompatActivity implements AppEventListener
     }
 
     private void initFragment() {
+
+        //title
         titleFragment = new TitleFragment();
         titleFragment.setHandler(eventHandler);
         titleFragment.setBackVisible(true);
+
+        //ad
         adFragment = new AdFragment();
         adFragment.setHandler(eventHandler);
+
+
+        //login
         adminLoginFragment = new AdminLoginFragment();
         adminLoginFragment.setHandler(eventHandler);
 
+        //main
         adminMainFragment = new AdminMainFragment();
         adminMainFragment.setHandler(eventHandler);
 
@@ -95,6 +104,9 @@ public class AdminActivity extends AppCompatActivity implements AppEventListener
         switch (event) {
             case EVENT_ADMIN_LOGIN_SUCCESS:
                 onAdminLoginSuccess();
+                break;
+            case EVENT_TITLE_BACK_CLICKED:
+                AndroidUtils.pressBack();
                 break;
             default:
                 break;

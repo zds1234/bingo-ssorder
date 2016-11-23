@@ -27,14 +27,14 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_main, container, false);
 
-        view.findViewById(R.id.button1).setOnClickListener(this);
-        view.findViewById(R.id.button2).setOnClickListener(this);
-        view.findViewById(R.id.button3).setOnClickListener(this);
-        view.findViewById(R.id.button4).setOnClickListener(this);
-        view.findViewById(R.id.button5).setOnClickListener(this);
-        view.findViewById(R.id.button6).setOnClickListener(this);
-        view.findViewById(R.id.button7).setOnClickListener(this);
-        view.findViewById(R.id.button8).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button1).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button2).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button3).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button4).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button5).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button6).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button7).setOnClickListener(this);
+        view.findViewById(R.id.admin_main_button8).setOnClickListener(this);
 
         return view;
     }
@@ -42,22 +42,22 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button1:
+            case R.id.admin_main_button1:
                 break;
-            case R.id.button2:
+            case R.id.admin_main_button2:
                 break;
-            case R.id.button3:
+            case R.id.admin_main_button3:
                 break;
-            case R.id.button4:
+            case R.id.admin_main_button4:
                 startFoodManager();
                 break;
-            case R.id.button5:
+            case R.id.admin_main_button5:
                 break;
-            case R.id.button6:
+            case R.id.admin_main_button6:
                 break;
-            case R.id.button7:
+            case R.id.admin_main_button7:
                 break;
-            case R.id.button8:
+            case R.id.admin_main_button8:
                 break;
             default:
                 break;

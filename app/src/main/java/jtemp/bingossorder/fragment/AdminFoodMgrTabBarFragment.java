@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import jtemp.bingossorder.activity.AdminFoodManagerActivity;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
@@ -47,13 +48,13 @@ public class AdminFoodMgrTabBarFragment extends Fragment {
         }
         switch (id) {
             case R.id.radioButton1:
-                handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_MGR_DISPLAY.toMessage(handler));
+                handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_MGR_SWITCH_TAB.toMessage(handler, AdminFoodManagerActivity.TAB_INDEX.FOOD_MGR));
                 break;
             case R.id.radioButton2:
-                handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_CAT_MGR_DISPLAY.toMessage(handler));
+                handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_MGR_SWITCH_TAB.toMessage(handler, AdminFoodManagerActivity.TAB_INDEX.FOOD_MGR_CATEGORY));
                 break;
             case R.id.radioButton3:
-                handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_SPEC_MGR_DISPLAY.toMessage(handler));
+                handler.sendMessage(AppEvent.EVENT_ADMIN_FOOD_MGR_SWITCH_TAB.toMessage(handler, AdminFoodManagerActivity.TAB_INDEX.FOOD_MGR_SPEC));
                 break;
             default:
                 break;
