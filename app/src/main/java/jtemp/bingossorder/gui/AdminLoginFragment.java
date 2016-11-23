@@ -1,4 +1,4 @@
-package jtemp.bingossorder.fragment;
+package jtemp.bingossorder.gui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

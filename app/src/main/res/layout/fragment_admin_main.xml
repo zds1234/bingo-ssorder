@@ -14,28 +14,28 @@
             android:id="@+id/admin_main_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="打印接班" />
 
         <Button
             android:id="@+id/admin_main_button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="单据补打" />
 
         <Button
             android:id="@+id/admin_main_button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="菜品估清" />
 
         <Button
             android:id="@+id/admin_main_button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="菜品管理" />
 
 
@@ -51,28 +51,28 @@
             android:id="@+id/admin_main_button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="参数设置" />
 
         <Button
             android:id="@+id/admin_main_button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="统计报表" />
 
         <Button
             android:id="@+id/admin_main_button7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="返回点餐" />
 
         <Button
             android:id="@+id/admin_main_button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:text="关机重启" />
 
     </LinearLayout>

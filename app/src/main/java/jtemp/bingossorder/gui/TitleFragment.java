@@ -1,4 +1,4 @@
-package jtemp.bingossorder.fragment;
+package jtemp.bingossorder.gui;
 
 
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
+import jtemp.bingossorder.utils.AndroidUtils;
 
 /**
  * 首页头
@@ -24,6 +25,8 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     private boolean actionVisible;
 
     private View view;
+
+    private String actionText;
 
     public void setHandler(AppEventHandler handler) {
         this.handler = handler;
@@ -39,6 +42,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
         this.view = view;
         this.setBackVisible(this.backVisible);
         this.setActionVisible(this.actionVisible);
+        this.setActionText(actionText);
         return view;
     }
 
@@ -64,6 +68,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
         }
         switch (v.getId()) {
             case R.id.title_bingo:
+                AndroidUtils.hideSoftKeyboard(getActivity());
                 handler.sendMessage(AppEvent.EVENT_TITLE_BINGO_CLICKED.toMessage(handler));
                 break;
             case R.id.title_back:
@@ -78,6 +83,7 @@ public class TitleFragment extends Fragment implements View.OnClickListener {
     }
 
     public void setActionText(String text) {
+        this.actionText = text;
         if (this.view != null) {
             Button button = (Button) this.view.findViewById(R.id.title_action);
             button.setText(text);

@@ -1,4 +1,4 @@
-package jtemp.bingossorder.fragment;
+package jtemp.bingossorder.gui;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -46,9 +46,6 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
     @BindView(R.id.food_category_is_taocan)
     private ViewGroup categoryIsTaocan;
 
-    @BindView(R.id.food_category_id)
-    private EditText categoryId;
-
     @BindView(R.id.food_category_name)
     private EditText categoryName;
 
@@ -94,10 +91,10 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
 
         //设置默认值
         categoryTaocanSwitch.setChecked(false);
+        categoryName.setText("");
 
         Integer maxId = DataSupport.max(EntityFoodCategory.class, "id", Integer.class);
         maxId = (maxId == null ? 1 : maxId + 1);
-        categoryId.setText(String.valueOf(maxId));
         categoryOrder.setText(String.valueOf(maxId));
     }
 
@@ -109,12 +106,9 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
         categoryUpdate.setVisibility(View.VISIBLE);
 
         //设置默认值
-        categoryId.setText(String.valueOf(foodCategory.getId()));
         categoryName.setText(foodCategory.getCategoryName());
         categoryOrder.setText(String.valueOf(foodCategory.getCategoryOrder()));
         categoryLimit.setText(String.valueOf(foodCategory.getPurchaseLimit()));
-        categoryId.setText(String.valueOf(foodCategory.getId()));
-        categoryId.setEnabled(false);
         categoryTaocanSwitch.setChecked(foodCategory.isTaocan());
         switchTaoCan();
     }
@@ -189,7 +183,6 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
 
     private void addFoodCategory() {
         try {
-            int id = Integer.parseInt(categoryId.getText().toString().trim());
             String name = categoryName.getText().toString().trim();
             int limit = Integer.parseInt(categoryLimit.getText().toString().trim());
             int order = Integer.parseInt(categoryOrder.getText().toString().trim());
@@ -213,13 +206,12 @@ public class AdminFoodMgrCategoryDialog extends Dialog implements View.OnClickLi
                 }
             }
             EntityFoodCategory entityFoodCategory = new EntityFoodCategory();
-            entityFoodCategory.setId(id);
             entityFoodCategory.setCategoryName(name);
             entityFoodCategory.setPurchaseLimit(limit);
             entityFoodCategory.setCategoryOrder(order);
             entityFoodCategory.setTaocan(taocan);
             entityFoodCategory.setRelations(relations);
-            if (entityFoodCategory.saveIfNotExist("id=? and categoryName=?", String.valueOf(id), name)) {
+            if (entityFoodCategory.saveIfNotExist("categoryName=?", name)) {
                 Toast.makeText(getContext(), "保存成功", Toast.LENGTH_SHORT).show();
                 loadCategoryList();
                 this.hide();

@@ -1,4 +1,4 @@
-package jtemp.bingossorder.fragment;
+package jtemp.bingossorder.gui;
 
 
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.adapter.FoodCategoryListAdapter;
 import jtemp.bingossorder.admin.AdminFoodManager;
 import jtemp.bingossorder.entity.EntityFoodCategory;
+import jtemp.bingossorder.gui.adapter.FoodCategoryListAdapter;
 import jtemp.bingossorder.utils.AndroidUtils;
 
 /**
@@ -23,6 +23,8 @@ import jtemp.bingossorder.utils.AndroidUtils;
 public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnClickListener {
 
     private FoodCategoryListAdapter foodCategoryListAdapter;
+
+    private AdminFoodMgrCategoryDialog dialog;
 
 
     public AdminFoodMgrCategoryFragment() {
@@ -33,6 +35,7 @@ public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_admin_food_mgr_category, container, false);
+        dialog = new AdminFoodMgrCategoryDialog(getActivity(), this);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,14 +65,12 @@ public class AdminFoodMgrCategoryFragment extends Fragment implements View.OnCli
     }
 
     public void showAddCategoryModel() {
-        AdminFoodMgrCategoryDialog dialog = new AdminFoodMgrCategoryDialog(getActivity(), this);
         dialog.setTitle("菜品添加");
         dialog.initContent(null);
         dialog.show();
     }
 
     public void showEditCategoryModel(EntityFoodCategory foodCategory) {
-        AdminFoodMgrCategoryDialog dialog = new AdminFoodMgrCategoryDialog(getActivity(), this);
         dialog.setTitle("菜品编辑");
         dialog.initContent(foodCategory);
         dialog.show();

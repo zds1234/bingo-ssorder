@@ -12,9 +12,9 @@ import android.view.WindowManager;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.bingossorder.event.AppEventListener;
-import jtemp.bingossorder.fragment.AdFragment;
-import jtemp.bingossorder.fragment.MainContentFragment;
-import jtemp.bingossorder.fragment.TitleFragment;
+import jtemp.bingossorder.gui.AdFragment;
+import jtemp.bingossorder.gui.MainContentFragment;
+import jtemp.bingossorder.gui.TitleFragment;
 
 /**
  * 首页

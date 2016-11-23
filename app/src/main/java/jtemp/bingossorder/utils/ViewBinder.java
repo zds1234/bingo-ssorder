@@ -1,9 +1,7 @@
 package jtemp.bingossorder.utils;
 
-import android.app.Dialog;
-import android.view.View;
-
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * Created by ZMS on 2016/10/31.
@@ -11,41 +9,27 @@ import java.lang.reflect.Field;
 
 public final class ViewBinder {
 
-    public static void bind(View view, Object obj) {
-        Field[] fields = obj.getClass().getDeclaredFields();
-        if (fields == null || fields.length == 0) {
-            return;
-        }
-        for (Field field : fields) {
-            BindView bindView = field.getAnnotation(BindView.class);
-            if (bindView == null) {
-                continue;
+    public static void bind(Object viewContainer, Object bindTo) {
+        try {
+            Method method = viewContainer.getClass().getMethod("findViewById", int.class);
+            Field[] fields = bindTo.getClass().getDeclaredFields();
+            if (fields == null || fields.length == 0) {
+                return;
             }
-            View v = view.findViewById(bindView.value());
-            field.setAccessible(true);
-            try {
-                field.set(obj, v);
-            } catch (Exception e) {
+            for (Field field : fields) {
+                BindView bindView = field.getAnnotation(BindView.class);
+                if (bindView == null) {
+                    continue;
+                }
+                Object v = method.invoke(viewContainer, bindView.value());
+                field.setAccessible(true);
+                try {
+                    field.set(bindTo, v);
+                } catch (Exception e) {
+                }
             }
-        }
-    }
-
-    public static void bind(Dialog view, Object obj) {
-        Field[] fields = obj.getClass().getDeclaredFields();
-        if (fields == null || fields.length == 0) {
-            return;
-        }
-        for (Field field : fields) {
-            BindView bindView = field.getAnnotation(BindView.class);
-            if (bindView == null) {
-                continue;
-            }
-            View v = view.findViewById(bindView.value());
-            field.setAccessible(true);
-            try {
-                field.set(obj, v);
-            } catch (Exception e) {
-            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

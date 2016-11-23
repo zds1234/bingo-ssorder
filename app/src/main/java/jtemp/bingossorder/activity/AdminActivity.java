@@ -13,10 +13,10 @@ import android.view.WindowManager;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.bingossorder.event.AppEventListener;
-import jtemp.bingossorder.fragment.AdFragment;
-import jtemp.bingossorder.fragment.AdminLoginFragment;
-import jtemp.bingossorder.fragment.AdminMainFragment;
-import jtemp.bingossorder.fragment.TitleFragment;
+import jtemp.bingossorder.gui.AdFragment;
+import jtemp.bingossorder.gui.AdminLoginFragment;
+import jtemp.bingossorder.gui.AdminMainFragment;
+import jtemp.bingossorder.gui.TitleFragment;
 import jtemp.bingossorder.utils.AndroidUtils;
 
 /**

@@ -1,4 +1,4 @@
-package jtemp.bingossorder.adapter;
+package jtemp.bingossorder.gui.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.entity.EntityFoodCategory;
-import jtemp.bingossorder.fragment.AdminFoodMgrCategoryFragment;
+import jtemp.bingossorder.gui.AdminFoodMgrCategoryFragment;
 
 /**
  * Created by ZMS on 2016/11/23.
@@ -46,7 +46,7 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(FoodCategoryListAdapter.ViewHolder holder, int position) {
         EntityFoodCategory entity = data.get(position);
         holder.setData(entity);
         holder.itemView.setTag(new Integer(position));
@@ -65,13 +65,10 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        private View itemView;
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.itemView = itemView;
         }
 
         public void setData(EntityFoodCategory entity) {
@@ -80,9 +77,9 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
             sb.append(entity.getCategoryName());
             sb.append("    ");
             if (entity.getPurchaseLimit() > 0) {
-                sb.append("单点限购:").append(entity.getPurchaseLimit());
+                sb.append("单点限量:").append(entity.getPurchaseLimit());
             } else {
-                sb.append("无限购   ");
+                sb.append("无单点限量");
             }
             sb.append("    ");
             if (entity.isTaocan()) {

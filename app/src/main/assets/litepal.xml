@@ -4,5 +4,6 @@
     <version value="1" />
     <list>
         <mapping class="jtemp.bingossorder.entity.EntityFoodCategory" />
+        <mapping class="jtemp.bingossorder.entity.EntityFoodSpec" />
     </list>
 </litepal>

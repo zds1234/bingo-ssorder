@@ -1,5 +1,4 @@
-package jtemp.bingossorder.fragment;
-
+package jtemp.bingossorder.gui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,23 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import jtemp.bingossorder.activity.R;
+import jtemp.bingossorder.event.AppEventHandler;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 广告
  */
-public class AdminFoodMgrSpecFragment extends Fragment {
+public class AdFragment extends Fragment {
 
+    private AppEventHandler handler;
 
-    public AdminFoodMgrSpecFragment() {
-        // Required empty public constructor
+    public void setHandler(AppEventHandler handler) {
+        this.handler = handler;
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_food_mgr_spec, container, false);
+        return inflater.inflate(R.layout.fragment_ad, container, false);
     }
-
 }

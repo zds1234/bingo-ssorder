@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_app_background"
     android:orientation="vertical">
 
     <View
@@ -18,7 +19,7 @@
         <RadioButton
             android:id="@+id/radioButton1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:checked="true"
@@ -29,7 +30,7 @@
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
@@ -39,7 +40,7 @@
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"

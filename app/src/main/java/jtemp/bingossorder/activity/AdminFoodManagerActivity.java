@@ -12,11 +12,12 @@ import android.view.WindowManager;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.bingossorder.event.AppEventListener;
-import jtemp.bingossorder.fragment.AdminFoodMgrCategoryFragment;
-import jtemp.bingossorder.fragment.AdminFoodMgrFragment;
-import jtemp.bingossorder.fragment.AdminFoodMgrSpecFragment;
-import jtemp.bingossorder.fragment.AdminFoodMgrTabBarFragment;
-import jtemp.bingossorder.fragment.TitleFragment;
+import jtemp.bingossorder.gui.AdminFoodMgrCategoryFragment;
+import jtemp.bingossorder.gui.AdminFoodMgrEditFragment;
+import jtemp.bingossorder.gui.AdminFoodMgrFragment;
+import jtemp.bingossorder.gui.AdminFoodMgrSpecFragment;
+import jtemp.bingossorder.gui.AdminFoodMgrTabBarFragment;
+import jtemp.bingossorder.gui.TitleFragment;
 import jtemp.bingossorder.utils.AndroidUtils;
 
 public class AdminFoodManagerActivity extends AppCompatActivity implements AppEventListener {
@@ -24,7 +25,8 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
     public enum TAB_INDEX {
         FOOD_MGR,
         FOOD_MGR_CATEGORY,
-        FOOD_MGR_SPEC
+        FOOD_MGR_SPEC,
+        FOOD_EDIT
     }
 
     private TitleFragment titleFragment;
@@ -50,8 +52,10 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
 
         //title
         titleFragment = new TitleFragment();
-        titleFragment.setBackVisible(true);
         titleFragment.setHandler(handler);
+        titleFragment.setBackVisible(true);
+        titleFragment.setActionVisible(true);
+        titleFragment.setActionText("添加");
 
         //tab bar
         adminFoodMgrTabBarFragment = new AdminFoodMgrTabBarFragment();
@@ -68,6 +72,11 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
         //food spec mgr
         AdminFoodMgrSpecFragment adminFoodMgrSpecFragment = new AdminFoodMgrSpecFragment();
         tab[TAB_INDEX.FOOD_MGR_SPEC.ordinal()] = adminFoodMgrSpecFragment;
+
+        //food edit
+        AdminFoodMgrEditFragment adminFoodMgrEditFragment = new AdminFoodMgrEditFragment();
+        tab[TAB_INDEX.FOOD_EDIT.ordinal()] = adminFoodMgrEditFragment;
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -87,7 +96,11 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
                 break;
             }
             case EVENT_TITLE_BACK_CLICKED: {
-                AndroidUtils.pressBack();
+                if (current == TAB_INDEX.FOOD_EDIT) {
+                    replaceContent(TAB_INDEX.FOOD_MGR);
+                } else {
+                    AndroidUtils.pressBack();
+                }
                 break;
             }
             case EVENT_TITLE_ACTION_CLICKED: {
@@ -105,26 +118,34 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
                 AdminFoodMgrCategoryFragment foodMgrCategoryFragment = (AdminFoodMgrCategoryFragment) tab[current.ordinal()];
                 foodMgrCategoryFragment.showAddCategoryModel();
                 break;
+            case FOOD_MGR_SPEC:
+                AdminFoodMgrSpecFragment foodMgrSpecFragment = (AdminFoodMgrSpecFragment) tab[current.ordinal()];
+                foodMgrSpecFragment.showAddSpecModel();
+                break;
+            case FOOD_MGR:
+                replaceContent(TAB_INDEX.FOOD_EDIT);
+                break;
             default:
                 break;
         }
     }
 
     private void replaceContent(TAB_INDEX tab_index) {
+        Fragment fragment = tab[tab_index.ordinal()];
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.content_fragment, tab[tab_index.ordinal()]);
+        transaction.replace(R.id.content_fragment, fragment);
         transaction.commit();
         current = tab_index;
-        switch (tab_index) {
-            case FOOD_MGR_CATEGORY:
-                titleFragment.setActionText("添加");
-                titleFragment.setActionVisible(true);
+        switch (current) {
+            case FOOD_EDIT:
+                titleFragment.setActionVisible(false);
                 break;
             default:
-                titleFragment.setActionVisible(false);
+                titleFragment.setActionVisible(true);
                 break;
         }
     }
+
 
 }
