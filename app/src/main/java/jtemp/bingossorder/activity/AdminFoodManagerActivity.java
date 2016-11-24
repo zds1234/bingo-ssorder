@@ -125,6 +125,10 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
             case FOOD_MGR:
                 replaceContent(TAB_INDEX.FOOD_EDIT);
                 break;
+            case FOOD_EDIT:
+                AdminFoodMgrEditFragment adminFoodMgrEditFragment = (AdminFoodMgrEditFragment) tab[TAB_INDEX.FOOD_EDIT.ordinal()];
+                adminFoodMgrEditFragment.saveFood();
+                break;
             default:
                 break;
         }
@@ -139,10 +143,10 @@ public class AdminFoodManagerActivity extends AppCompatActivity implements AppEv
         current = tab_index;
         switch (current) {
             case FOOD_EDIT:
-                titleFragment.setActionVisible(false);
+                titleFragment.setActionText("保存");
                 break;
             default:
-                titleFragment.setActionVisible(true);
+                titleFragment.setActionText("添加");
                 break;
         }
     }

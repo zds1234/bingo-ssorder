@@ -27,7 +27,6 @@ public class AdminFoodMgrSpecFragment extends Fragment {
 
 
     public AdminFoodMgrSpecFragment() {
-        // Required empty public constructor
     }
 
 
@@ -62,5 +61,12 @@ public class AdminFoodMgrSpecFragment extends Fragment {
         dialog.setTitle("菜品规格");
         dialog.setSpecData(entityFoodSpec);
         dialog.show();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        dialog.dismiss();
+        dialog = null;
     }
 }

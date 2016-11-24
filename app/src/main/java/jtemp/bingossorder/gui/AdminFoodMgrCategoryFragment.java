@@ -82,4 +82,11 @@ public class AdminFoodMgrCategoryFragment extends Fragment {
         List<EntityFoodCategory> list = AdminFoodManager.findAllCategory();
         foodCategoryListAdapter.setData(list);
     }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        dialog.dismiss();
+        dialog = null;
+    }
 }

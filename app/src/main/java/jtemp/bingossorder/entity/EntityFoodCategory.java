@@ -3,6 +3,8 @@ package jtemp.bingossorder.entity;
 import org.litepal.annotation.Column;
 import org.litepal.crud.DataSupport;
 
+import java.util.List;
+
 /**
  * Created by ZMS on 2016/11/22.
  */
@@ -21,7 +23,8 @@ public class EntityFoodCategory extends DataSupport {
 
     private boolean taocan;
 
-    private String relations;
+    @Column(ignore = true)
+    private List<EntityFoodCategory> relationCategory;
 
     public int getId() {
         return id;
@@ -63,11 +66,11 @@ public class EntityFoodCategory extends DataSupport {
         this.taocan = taocan;
     }
 
-    public String getRelations() {
-        return relations;
+    public List<EntityFoodCategory> getRelationCategory() {
+        return relationCategory;
     }
 
-    public void setRelations(String relations) {
-        this.relations = relations;
+    public void setRelationCategory(List<EntityFoodCategory> relationCategory) {
+        this.relationCategory = relationCategory;
     }
 }
