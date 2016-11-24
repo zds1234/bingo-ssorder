@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="ssorder" />
-    <version value="3" />
+    <version value="4" />
     <list>
         <mapping class="jtemp.bingossorder.entity.EntityFoodCategory" />
         <mapping class="jtemp.bingossorder.entity.EntityFoodSpec" />
         <mapping class="jtemp.bingossorder.entity.EntityFood" />
+        <mapping class="jtemp.bingossorder.entity.EntityFoodCategoryRelationMapping" />
+        <mapping class="jtemp.bingossorder.entity.EntityFoodRelationMapping" />
+        <mapping class="jtemp.bingossorder.entity.EntityFoodSpecMapping" />
     </list>
 </litepal>

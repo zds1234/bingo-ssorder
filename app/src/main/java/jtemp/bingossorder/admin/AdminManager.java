@@ -1,5 +1,7 @@
 package jtemp.bingossorder.admin;
 
+import jtemp.bingossorder.entity.EntityFoodCategory;
+
 /**
  * Created by ZMS on 2016/11/21.
  * <p>
@@ -17,5 +19,4 @@ public final class AdminManager {
     public static boolean isAdminPasswordValidate(String password) {
         return "1".equals(password);
     }
-
 }

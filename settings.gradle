@@ -1,1 +1,1 @@
-include ':app', ':edk'
+include ':app', ':edk', ':hardware'

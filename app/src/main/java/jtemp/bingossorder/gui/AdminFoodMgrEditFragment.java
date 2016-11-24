@@ -2,17 +2,18 @@ package jtemp.bingossorder.gui;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -21,12 +22,15 @@ import com.eunut.ext.imagepicker.activity.AlbumActivity;
 import com.eunut.ext.imagepicker.bean.ImageItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jtemp.bingossorder.Const;
+import jtemp.bingossorder.activity.AdminFoodListByCategoryActivity;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.admin.AdminFoodManager;
 import jtemp.bingossorder.entity.EntityFood;
@@ -34,6 +38,7 @@ import jtemp.bingossorder.entity.EntityFoodCategory;
 import jtemp.bingossorder.entity.EntityFoodSpec;
 import jtemp.bingossorder.entity.FoodSpecType;
 import jtemp.bingossorder.utils.AndroidUtils;
+import jtemp.bingossorder.utils.FileUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,6 +75,11 @@ public class AdminFoodMgrEditFragment extends Fragment {
     @BindView(R.id.food_edit_pic)
     ImageView image;
 
+    @BindView(R.id.food_edit_relations)
+    ViewGroup foodRelationContainer;
+
+    private Map<String, View> relationCategoryView = new HashMap<>();
+
     String imagePath;
 
 
@@ -94,8 +104,6 @@ public class AdminFoodMgrEditFragment extends Fragment {
         }
     }
 
-    private static final int PICTURE = 10086; //requestcode
-
     private void chooseFoodImage() {
         ImagePicker imagePicker = ImagePicker.getInstance();
         imagePicker.setMultiMode(false);
@@ -117,6 +125,8 @@ public class AdminFoodMgrEditFragment extends Fragment {
                     imagePath = path;
                     Glide.with(getContext()).load(path).asBitmap().into(image);
                     break;
+                case R.id.food_edit_relations & 0x0000ffff:
+                    break;
             }
         }
     }
@@ -129,6 +139,12 @@ public class AdminFoodMgrEditFragment extends Fragment {
             button.setText(category.getCategoryName());
             button.setTag(category);
             food_edit_types.addView(button);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onSelectCategory((EntityFoodCategory) v.getTag());
+                }
+            });
         }
 
         food_edit_size.removeAllViewsInLayout();
@@ -151,6 +167,44 @@ public class AdminFoodMgrEditFragment extends Fragment {
                     break;
             }
         }
+    }
+
+    private void onSelectCategory(EntityFoodCategory category) {
+        relationCategoryView.clear();
+        foodRelationContainer.removeAllViewsInLayout();
+        if (category.isTaocan()) {
+            for (final EntityFoodCategory relationCategory : category.getRelationCategory().values()) {
+                View view = LayoutInflater.from(getContext()).inflate(R.layout.food_edit_relations_item, null);
+                TextView textView = (TextView) view.findViewById(R.id.food_edit_relation_category);
+                textView.setText(relationCategory.getCategoryName());
+                Button choose = (Button) view.findViewById(R.id.food_edit_relations_choose);
+                view.setTag(relationCategory);
+                relationCategoryView.put(String.valueOf(category.getId()), view);
+                choose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startChooseFoodActivity(relationCategory);
+                    }
+                });
+                foodRelationContainer.addView(view);
+            }
+            foodRelationContainer.setVisibility(View.VISIBLE);
+        } else {
+            foodRelationContainer.setVisibility(View.INVISIBLE);
+        }
+        ViewGroup parent = (ViewGroup) foodRelationContainer.getParent();
+        parent.updateViewLayout(foodRelationContainer, foodRelationContainer.getLayoutParams());
+    }
+
+    /**
+     * 选择关联菜品
+     *
+     * @param relationCategory
+     */
+    private void startChooseFoodActivity(EntityFoodCategory relationCategory) {
+        Intent intent = new Intent(getContext(), AdminFoodListByCategoryActivity.class);
+        intent.putExtra(AdminFoodListByCategoryActivity.PARAM_FOOD_CATEGORY, String.valueOf(relationCategory.getId()));
+        startActivityForResult(intent, R.id.food_edit_relations & 0x0000ffff);
     }
 
     public void saveFood() {
@@ -188,17 +242,14 @@ public class AdminFoodMgrEditFragment extends Fragment {
         Toast.makeText(getContext(), imagePath, Toast.LENGTH_SHORT).show();
 
         EntityFood food = new EntityFood();
-//        food.setCategory(category);
+        food.setEntityFoodCategory(category);
         food.setName(name);
         food.setNameEn(nameEn);
         food.setPrice(price);
         food.setRecommend(recommend);
         food.setSaleable(saleable);
-        image.setDrawingCacheEnabled(true);
-        Bitmap bitmap = image.getDrawingCache();
-        image.setDrawingCacheEnabled(false);
-        food.setImage(bitmap);
-        food.save();
+        food.setImage(FileUtils.readBytes(imagePath));
+        AdminFoodManager.saveFood(food);
     }
 
     @Override

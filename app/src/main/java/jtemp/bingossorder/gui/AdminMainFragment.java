@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import jtemp.bingossorder.activity.AdminFoodManagerActivity;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEventHandler;
+import jtemp.hardware.HardwareTestActivity;
 
 /**
  * 管理首页
@@ -43,7 +44,8 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
                     R.id.admin_main_button5,
                     R.id.admin_main_button6,
                     R.id.admin_main_button7,
-                    R.id.admin_main_button8
+                    R.id.admin_main_button8,
+                    R.id.hardware_test
             }
     )
     @Override
@@ -66,9 +68,17 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.admin_main_button8:
                 break;
+            case R.id.hardware_test:
+                startHardwareTest();
+                break;
             default:
                 break;
         }
+    }
+
+    private void startHardwareTest() {
+        Intent intent = new Intent(getActivity().getApplicationContext(), HardwareTestActivity.class);
+        getActivity().startActivity(intent);
     }
 
     private void startFoodManager() {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_hardware_test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="刷新" />
+
+        <Button
+            android:id="@+id/print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打印" />
+
+        <Button
+            android:id="@+id/cut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="切纸" />
+
+        <Button
+            android:id="@+id/read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="读码" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设备信息"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/device_info"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EAEAEA" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="读入数据"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/read_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
