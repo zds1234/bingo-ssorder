@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="red">#FF1014</color>
+    <color name="green">#00ff00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#BDBDBD</color>
+    <color name="gold">#b89766</color>
+    <color name="orange">#ffe3432c</color>
+    <color name="black">#000000</color>
+    <color name="beige">#fff1eee9</color>
+    <color name="dark_green">#1c3f00</color>
+    <color name="dark_gray">#333333</color>
+    <color name="light_gray">#AFFFFFFF</color>
+    <color name="light_red">#ffff4444</color>
+    <color name="light_green">#ff99cc00</color>
+    <color name="light_orange">#ffffbb33</color>
+    <color name="light_blue">#ff33b5e5</color>
+    <color name="light_black">#FF353535</color>
+    
+    <color name="vpi__background_holo_light">#fff3f3f3</color>
+    <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
+    <color name="vpi__bright_foreground_holo_light">@color/black</color>
+    <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+    <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
+    <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+    <color name="viewfinder_mask">#66303237</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffbd21</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color>
+    <color name="delete_zone_bg">#e1000000</color>
+    <color name="pop_window_bg">#cc000000</color>
+
+</resources>

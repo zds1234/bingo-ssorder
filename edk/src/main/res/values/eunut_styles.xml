@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+
+    <style name="Animations"/>
+
+    <style name="Animations.PopUpMenu"/>
+
+    <style name="Animations.PopUpMenu.Slide">
+        <item name="@android:windowEnterAnimation">@anim/eunut_bottom_in</item>
+        <item name="@android:windowExitAnimation">@anim/eunut_bottom_out</item>
+    </style>
+    <style name="Animations.PopUpMenu.SlideUp">
+        <item name="@android:windowEnterAnimation">@anim/eunut_top_in</item>
+        <item name="@android:windowExitAnimation">@anim/eunut_top_out</item>
+    </style>
+    <style name="Animations.PopUpMenu.SlideDown">
+        <item name="@android:windowEnterAnimation">@anim/eunut_bottom_out</item>
+        <item name="@android:windowExitAnimation">@anim/eunut_bottom_in</item>
+    </style>
+    <style name="Animations.PopUpMenu.Fade">
+        <item name="@android:windowEnterAnimation">@anim/eunut_fade_in</item>
+        <item name="@android:windowExitAnimation">@anim/eunut_fade_out</item>
+    </style>
+    <!-- ZProgressHUD进度提示主体样式 -->
+    <style name="ZProgressHUDTheme" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@drawable/eunut_hud_background</item>
+    </style>
+
+    <style name="Theme.PageIndicatorDefaults" parent="android:Theme">
+        <item name="IconPageIndicatorStyle">@style/Widget.IconPageIndicator</item>
+        <item name="TabPageIndicatorStyle">@style/Widget.TabPageIndicator</item>
+    </style>
+
+    <style name="Widget"/>
+
+    <style name="Widget.TabPageIndicator">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/eunut_tab_indicator</item>
+        <item name="android:paddingLeft">22dip</item>
+        <item name="android:paddingRight">22dip</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.TabPageIndicator</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="TextAppearance.TabPageIndicator" parent="Widget">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.IconPageIndicator" parent="Widget">
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+    </style>
+
+    <style name="ActionSheetStyleIOS6">
+        <item name="actionSheetBackground">@drawable/eunut_as_ios6_bg</item>
+        <item name="cancelButtonBackground">@drawable/eunut_as_ios6_dark</item>
+        <item name="otherButtonTopBackground">@drawable/eunut_as_ios6_gray</item>
+        <item name="otherButtonMiddleBackground">@drawable/eunut_as_ios6_gray</item>
+        <item name="otherButtonBottomBackground">@drawable/eunut_as_ios6_gray</item>
+        <item name="otherButtonSingleBackground">@drawable/eunut_as_ios6_gray</item>
+        <item name="cancelButtonTextColor">@android:color/white</item>
+        <item name="otherButtonTextColor">@android:color/black</item>
+        <item name="actionSheetPadding">20dp</item>
+        <item name="otherButtonSpacing">5dp</item>
+        <item name="cancelButtonMarginTop">20dp</item>
+        <item name="actionSheetTextSize">16sp</item>
+    </style>
+
+    <style name="ActionSheetStyleIOS7">
+        <item name="actionSheetBackground">#00000000</item>
+        <item name="cancelButtonBackground">@drawable/eunut_as_ios7_cancel</item>
+        <item name="otherButtonTopBackground">@drawable/eunut_as_ios7_other_top</item>
+        <item name="otherButtonMiddleBackground">@drawable/eunut_as_ios7_other_middle</item>
+        <item name="otherButtonBottomBackground">@drawable/eunut_as_ios7_other_bottom</item>
+        <item name="otherButtonSingleBackground">@drawable/eunut_as_ios7_other_single</item>
+        <item name="cancelButtonTextColor">#1E82FF</item>
+        <item name="otherButtonTextColor">#1E82FF</item>
+        <item name="actionSheetPadding">10dp</item>
+        <item name="otherButtonSpacing">0dp</item>
+        <item name="cancelButtonMarginTop">10dp</item>
+        <item name="actionSheetTextSize">16sp</item>
+    </style>
+
+    <style name="TopBarDefaultStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableLeft">@drawable/eunut_action_back</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@color/light_blue</item>
+    </style>
+
+    <!--SuperCheckbox的样式-->
+    <style name="SuperCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/eunut_ip_supercheckbox_selector</item>
+    </style>
+
+</resources>

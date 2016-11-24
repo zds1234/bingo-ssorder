@@ -1,0 +1,36 @@
+下面是我随便生成的一个证书文件：
+keytool -genkey -keystore eunut.keystore -keyalg RSA -validity 20000 -alias eunut.keystore
+输入keystore密码： 
+您的名字与姓氏是什么？ 
+  [Unknown]：  www.eunut.com
+您的组织单位名称是什么？ 
+  [Unknown]：  Eunut Int.
+您的组织名称是什么？ 
+  [Unknown]：  优特科技
+您所在的城市或区域名称是什么？ 
+  [Unknown]：  北京 
+您所在的州或省份名称是什么？ 
+  [Unknown]：  北京 
+该单位的两字母国家代码是什么 
+  [Unknown]：  CN 
+CN=www.eunut.com, OU=Cybercare, O=优特科技, L=北京, ST=北京, C=CN 正确吗？ 
+  [否]：  y
+        （如果和 keystore 密码相同，按回车）： 
+再次输入新密码:
+命令参数说明：
+-genkey    产生证书文件 
+-keystore  指定密钥库的.keystore文件中 
+-keyalg     指定密钥的算法
+-validity    为证书有效天数，这里我们写的是10000天。 
+-alias       产生别名 
+在输入密码时没有回显，只管输入就可以了，一般位数建议使用20位，切忌需要记下来后面还要用，
+查看签名指纹
+keytool -list -v -keystore eunut.keystore
+
+keytool -list -v -keystore /Users/Chaly/.android/debug.keystore
+这个key的密码是：android
+
+
+手动生成.Jar文件后自动解包到apk文件
+
+这个方式需要自己手动进行.SO文件压缩，具体步骤为：将所有需要使用的.so文件压缩为.zip文件（zip中的文件目录结构为： lib/armeabi/*.so）然后把zip文件后缀改为.Jar然后放到libs生成apk就ok

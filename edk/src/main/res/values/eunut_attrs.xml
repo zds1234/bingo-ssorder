@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="radiu" format="dimension"/>
+    <!-- 自适应布局 -->
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension"/>
+        <attr name="verticalSpacing" format="dimension"/>
+        <attr name="android:orientation"/>
+        <attr name="debugDraw" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean"/>
+        <attr name="layout_horizontalSpacing" format="dimension"/>
+        <attr name="layout_verticalSpacing" format="dimension"/>
+    </declare-styleable>
+    <!-- 顶部通用工具条 -->
+    <attr name="action" format="reference"/>
+    <attr name="titleView" format="reference"/>
+    <attr name="TopBarStyle" format="reference"/>
+    <declare-styleable name="TopBar">
+        <attr name="android:background"/>
+        <attr name="android:drawableLeft"/>
+        <attr name="android:drawableRight"/>
+        <attr name="android:text"/>
+        <attr name="android:textSize"/>
+        <attr name="android:textColor"/>
+        <attr name="android:textStyle"/>
+        <attr name="android:title"/>
+        <attr name="action"/>
+        <attr name="titleView"/>
+        <attr name="TopBarStyle"/>
+    </declare-styleable>
+    <!-- 圆形进度条 -->
+    <declare-styleable name="CircleProgressBar">
+        <attr name="radiu"/>
+        <attr name="strokeWidth"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="ringColor" format="color"/>
+        <attr name="ringBgColor" format="color"/>
+    </declare-styleable>
+    <!-- 侧滑Item列表 -->
+    <declare-styleable name="SwipeListView">
+        <attr name="swipeOpenOnLongPress" format="boolean"/>
+        <attr name="swipeAnimationTime" format="integer"/>
+        <attr name="swipeOffsetLeft" format="dimension"/>
+        <attr name="swipeOffsetRight" format="dimension"/>
+        <attr name="swipeCloseAllItemsWhenMoveList" format="boolean"/>
+        <attr name="swipeFrontView" format="reference"/>
+        <attr name="swipeBackView" format="reference"/>
+        <attr name="swipeMode" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="both" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="left" value="3"/>
+        </attr>
+        <attr name="swipeActionLeft" format="enum">
+            <enum name="reveal" value="0"/>
+            <enum name="dismiss" value="1"/>
+            <enum name="choice" value="2"/>
+        </attr>
+        <attr name="swipeActionRight" format="enum">
+            <enum name="reveal" value="0"/>
+            <enum name="dismiss" value="1"/>
+            <enum name="choice" value="2"/>
+        </attr>
+        <attr name="swipeDrawableChecked" format="reference"/>
+        <attr name="swipeDrawableUnchecked" format="reference"/>
+    </declare-styleable>
+    <!-- 下拉刷新列表 -->
+    <declare-styleable name="PullToRefresh">
+
+        <!-- A drawable to use as the background of the Refreshable View -->
+        <attr name="ptrRefreshableViewBackground" format="reference|color"/>
+
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderBackground" format="reference|color"/>
+
+        <!-- Text Color of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextColor" format="reference|color"/>
+
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
+        <attr name="ptrHeaderSubTextColor" format="reference|color"/>
+
+        <!-- Mode of Pull-to-Refresh that should be used -->
+        <attr name="ptrMode">
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
+            <!-- These last two are depreacted -->
+            <flag name="pullDownFromTop" value="0x1"/>
+            <flag name="pullUpFromBottom" value="0x2"/>
+        </attr>
+
+        <!-- Whether the Indicator overlay(s) should be used -->
+        <attr name="ptrShowIndicator" format="reference|boolean"/>
+
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
+        <attr name="ptrDrawable" format="reference"/>
+
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableStart" format="reference"/>
+
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableEnd" format="reference"/>
+
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
+        <attr name="ptrOverScroll" format="reference|boolean"/>
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextAppearance" format="reference"/>
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
+        <attr name="ptrSubHeaderTextAppearance" format="reference"/>
+
+        <!-- Style of Animation should be used displayed when pulling. -->
+        <attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0"/>
+            <flag name="flip" value="0x1"/>
+        </attr>
+        <!-- Whether the user can scroll while the View is Refreshing -->
+        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean"/>
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
+        <attr name="ptrListViewExtrasEnabled" format="reference|boolean"/>
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
+        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean"/>
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
+        <attr name="ptrAdapterViewBackground" format="reference|color"/>
+        <attr name="ptrDrawableTop" format="reference"/>
+        <attr name="ptrDrawableBottom" format="reference"/>
+        <attr name="android:headerDividersEnabled"/>
+        <attr name="android:footerDividersEnabled"/>
+    </declare-styleable>
+    <!-- 水平滚动列表 -->
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension"/>
+        <attr name="android:divider"/>
+        <attr name="android:fadingEdgeLength"/>
+    </declare-styleable>
+    <!-- 字母侧边栏 -->
+    <declare-styleable name="LetterListView">
+        <attr name="android:textColor"/>
+        <attr name="android:textSize"/>
+        <attr name="textSelectedColor" format="color"/>
+    </declare-styleable>
+    <!--ViewPager指示器-->
+    <!-- Style of the circle indicator. -->
+    <attr name="CirclePageIndicatorStyle" format="reference"/>
+    <!-- Style of the icon indicator's views. -->
+    <attr name="IconPageIndicatorStyle" format="reference"/>
+    <!-- Style of the line indicator. -->
+    <attr name="LinePageIndicatorStyle" format="reference"/>
+    <!-- Style of the title indicator. -->
+    <attr name="TitlePageIndicatorStyle" format="reference"/>
+    <!-- Style of the tab indicator's tabs. -->
+    <attr name="TabPageIndicatorStyle" format="reference"/>
+    <!-- Style of the underline indicator. -->
+    <attr name="UnderlinePageIndicatorStyle" format="reference"/>
+    <declare-styleable name="ViewPagerIndicator">
+        <!-- Style of the circle indicator. -->
+        <attr name="CirclePageIndicatorStyle"/>
+        <!-- Style of the icon indicator's views. -->
+        <attr name="IconPageIndicatorStyle"/>
+        <!-- Style of the line indicator. -->
+        <attr name="LinePageIndicatorStyle"/>
+        <!-- Style of the title indicator. -->
+        <attr name="TitlePageIndicatorStyle"/>
+        <!-- Style of the tab indicator's tabs. -->
+        <attr name="TabPageIndicatorStyle"/>
+        <!-- Style of the underline indicator. -->
+        <attr name="UnderlinePageIndicatorStyle"/>
+    </declare-styleable>
+
+    <attr name="center" format="boolean"/>
+    <attr name="selectedColor" format="color"/>
+    <attr name="strokeWidth" format="dimension"/>
+    <attr name="unselectedColor" format="color"/>
+    <!-- Color of the filled circle that represents the current page. -->
+    <attr name="fill_color" format="color"/>
+    <!-- Color of the filled circles that represents pages. -->
+    <attr name="page_color" format="color"/>
+    <!-- Whether or not the selected indicator snaps to the circles. -->
+    <attr name="snaps" format="boolean"/>
+    <!-- Color of the open circles. -->
+    <attr name="stroke_color" format="color"/>
+
+    <declare-styleable name="CirclePageIndicator">
+        <!-- Orientation of the indicator. -->
+        <attr name="android:orientation"/>
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="android:gravity"/>
+        <!-- View background -->
+        <attr name="android:background"/>
+        <!-- Color of the filled circle that represents the current page. -->
+        <attr name="fill_color"/>
+        <!-- Color of the filled circles that represents pages. -->
+        <attr name="page_color"/>
+        <!-- Whether or not the selected indicator snaps to the circles. -->
+        <attr name="snaps"/>
+        <!-- Color of the open circles. -->
+        <attr name="stroke_color"/>
+        <!-- Radiu of the circles. This is also the spacing between circles. -->
+        <attr name="radiu"/>
+        <!-- Width of the stroke used to draw the circles. -->
+        <attr name="strokeWidth"/>
+    </declare-styleable>
+    <!-- Width of each indicator line. -->
+    <attr name="line_width" format="dimension"/>
+    <!-- Width of the gap between each indicator line. -->
+    <attr name="gap_width" format="dimension"/>
+    <declare-styleable name="LinePageIndicator">
+
+        <!-- Width of each indicator line. -->
+        <attr name="line_width"/>
+        <!-- Width of the gap between each indicator line. -->
+        <attr name="gap_width"/>
+        <!-- Whether or not the indicators should be centered. -->
+        <attr name="center"/>
+        <!-- Color of the unselected lines that represent the pages. -->
+        <attr name="unselectedColor"/>
+        <!-- Color of the selected line that represents the current page. -->
+        <attr name="selectedColor"/>
+        <!-- Width of each indicator line's stroke. -->
+        <attr name="strokeWidth"/>
+        <!-- View background -->
+        <attr name="android:background"/>
+    </declare-styleable>
+    <!-- Screen edge padding. -->
+    <attr name="clip_padding" format="dimension"/>
+    <!-- Color of the footer line and indicator. -->
+    <attr name="footer_color" format="color"/>
+    <!-- Height of the footer line. -->
+    <attr name="lineHeight" format="dimension"/>
+    <!-- Style of the indicator. Default is triangle. -->
+    <attr name="footerStyle">
+        <enum name="none" value="0"/>
+        <enum name="triangle" value="1"/>
+        <enum name="underline" value="2"/>
+    </attr>
+    <!-- Height of the indicator above the footer line. -->
+    <attr name="footerHeight" format="dimension"/>
+    <!-- Left and right padding of the underline indicator. -->
+    <attr name="footerUnderlinePadding" format="dimension"/>
+    <!-- Padding between the bottom of the title and the footer. -->
+    <attr name="footer_padding" format="dimension"/>
+    <!-- Position of the line. -->
+    <attr name="line_position">
+        <enum name="bottom" value="0"/>
+        <enum name="top" value="1"/>
+    </attr>
+    <!-- Whether or not the selected item is displayed as bold. -->
+    <attr name="selected_bold" format="boolean"/>
+    <!-- Padding between tags when bumping into each other. -->
+    <attr name="title_padding" format="dimension"/>
+    <!-- Padding between tags and the top of the View. -->
+    <attr name="top_padding" format="dimension"/>
+    <declare-styleable name="TitlePageIndicator">
+
+        <!-- Screen edge padding. -->
+        <attr name="clip_padding"/>
+        <!-- Color of the footer line and indicator. -->
+        <attr name="footer_color"/>
+        <!-- Height of the footer line. -->
+        <attr name="lineHeight"/>
+        <!-- Style of the indicator. Default is triangle. -->
+        <attr name="footerStyle"/>
+        <!-- Height of the indicator above the footer line. -->
+        <attr name="footerHeight"/>
+        <!-- Left and right padding of the underline indicator. -->
+        <attr name="footerUnderlinePadding"/>
+        <!-- Padding between the bottom of the title and the footer. -->
+        <attr name="footer_padding"/>
+        <!-- Position of the line. -->
+        <attr name="line_position"/>
+        <!-- Whether or not the selected item is displayed as bold. -->
+        <attr name="selected_bold"/>
+        <!-- Padding between tags when bumping into each other. -->
+        <attr name="title_padding"/>
+        <!-- Padding between tags and the top of the View. -->
+        <attr name="top_padding"/>
+        <!-- Color of the selected title. -->
+        <attr name="selectedColor"/>
+        <!-- Color of regular tags. -->
+        <attr name="android:textColor"/>
+        <!-- Size of title text. -->
+        <attr name="android:textSize"/>
+
+        <!-- View background -->
+        <attr name="android:background"/>
+    </declare-styleable>
+    <!-- Whether or not the selected indicator fades. -->
+    <attr name="fade" format="boolean"/>
+    <!-- Length of the delay to fade the indicator. -->
+    <attr name="fade_delay" format="integer"/>
+    <!-- Length of the indicator fade to transparent. -->
+    <attr name="fade_length" format="integer"/>
+    <declare-styleable name="UnderlinePageIndicator">
+
+        <!-- Whether or not the selected indicator fades. -->
+        <attr name="fade"/>
+        <!-- Length of the delay to fade the indicator. -->
+        <attr name="fade_delay"/>
+        <!-- Length of the indicator fade to transparent. -->
+        <attr name="fade_length"/>
+        <!-- Color of the selected line that represents the current page. -->
+        <attr name="selectedColor"/>
+        <!-- View background -->
+        <attr name="android:background"/>
+    </declare-styleable>
+    <!-- 条幅组件 -->
+    <declare-styleable name="BannerView">
+        <attr name="android:gravity"/>
+    </declare-styleable>
+    <!-- 侧滑菜单 -->
+    <declare-styleable name="SlidingMenu">
+        <attr name="direction">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+        <attr name="viewAbove" format="reference"/>
+        <attr name="viewBehind" format="reference"/>
+        <attr name="behindOffset" format="dimension"/>
+        <attr name="behindWidth" format="dimension"/>
+        <attr name="behindScrollScale" format="float"/>
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="shadowDrawable" format="reference"/>
+        <attr name="shadowWidth" format="dimension"/>
+        <attr name="fadeEnabled" format="boolean"/>
+        <attr name="fadeDegree" format="float"/>
+        <attr name="selectorEnabled" format="boolean"/>
+        <attr name="selectorDrawable" format="reference"/>
+    </declare-styleable>
+    <!-- 上滑菜单 -->
+    <declare-styleable name="SlidingUpPanelLayout">
+        <attr name="collapsedHeight" format="dimension"/>
+        <attr name="shadowHeight" format="dimension"/>
+        <attr name="fadeColor" format="color"/>
+        <attr name="flingVelocity" format="integer"/>
+        <attr name="dragView" format="reference"/>
+    </declare-styleable>
+    <!-- 滚动选择器 -->
+    <!-- Reference to an array resource that will populate a list/adapter. -->
+    <attr name="entries" format="reference"/>
+    <!--
+         Specifies how to place the content of an object, both
+         on the x- and y-axis, within the object itself.
+    -->
+    <attr name="gravity">
+
+        <!-- Push object to the top of its container, not changing its size. -->
+        <flag name="top" value="0x30"/>
+        <!-- Push object to the bottom of its container, not changing its size. -->
+        <flag name="bottom" value="0x50"/>
+        <!-- Push object to the left of its container, not changing its size. -->
+        <flag name="left" value="0x03"/>
+        <!-- Push object to the right of its container, not changing its size. -->
+        <flag name="right" value="0x05"/>
+        <!-- Place object in the vertical center of its container, not changing its size. -->
+        <flag name="center_vertical" value="0x10"/>
+        <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
+        <flag name="fill_vertical" value="0x70"/>
+        <!-- Place object in the horizontal center of its container, not changing its size. -->
+        <flag name="center_horizontal" value="0x01"/>
+        <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
+        <flag name="fill_horizontal" value="0x07"/>
+        <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
+        <flag name="center" value="0x11"/>
+        <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
+        <flag name="fill" value="0x77"/>
+        <!--
+             Additional option that can be set to have the top and/or bottom edges of
+             the child clipped to its container's bounds.
+             The clip will be based on the vertical gravity: a top gravity will clip the bottom
+             edge, a bottom gravity will clip the top edge, and neither will clip both edges.
+        -->
+        <flag name="clip_vertical" value="0x80"/>
+        <!--
+             Additional option that can be set to have the left and/or right edges of
+             the child clipped to its container's bounds.
+             The clip will be based on the horizontal gravity: a left gravity will clip the right
+             edge, a right gravity will clip the left edge, and neither will clip both edges.
+        -->
+        <flag name="clip_horizontal" value="0x08"/>
+    </attr>
+
+    <!-- Default Gallery style. -->
+    <!--<attr name="galleryStyle" format="reference"/>-->
+
+    <!--<declare-styleable name="Gallery">-->
+    <!--<attr name="gravity"/>-->
+    <!--&lt;!&ndash;-->
+    <!--Sets how long a transition animation should run (in milliseconds)-->
+    <!--when layout has changed.  Only relevant if animation is turned on.-->
+    <!--&ndash;&gt;-->
+    <!--<attr name="animationDuration" format="integer" min="0"/>-->
+    <!--<attr name="spacing" format="dimension"/>-->
+    <!--&lt;!&ndash; Sets the alpha on the items that are not selected. &ndash;&gt;-->
+    <!--<attr name="unselectedAlpha" format="float"/>-->
+    <!--</declare-styleable>-->
+    <declare-styleable name="AbsSpinner">
+        <attr name="entries"/>
+    </declare-styleable>
+    <!-- 心形进度条 -->
+    <declare-styleable name="HeartProgressBar">
+        <attr name="heartColor" format="color"/>
+    </declare-styleable>
+    <!--仿IOS的Action Sheet-->
+    <attr name="actionSheetStyle" format="reference"/>
+    <declare-styleable name="ActionSheet">
+        <attr name="actionSheetBackground" format="color|reference"/>
+        <attr name="cancelButtonBackground" format="color|reference"/>
+        <attr name="otherButtonTopBackground" format="color|reference"/>
+        <attr name="otherButtonMiddleBackground" format="color|reference"/>
+        <attr name="otherButtonBottomBackground" format="color|reference"/>
+        <attr name="otherButtonSingleBackground" format="color|reference"/>
+        <attr name="cancelButtonTextColor" format="color|reference"/>
+        <attr name="otherButtonTextColor" format="color|reference"/>
+        <attr name="actionSheetPadding" format="dimension|reference"/>
+        <attr name="otherButtonSpacing" format="dimension|reference"/>
+        <attr name="cancelButtonMarginTop" format="dimension|reference"/>
+        <attr name="actionSheetTextSize" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClipProgressBar">
+        <attr name="android:src"/>
+        <attr name="android:max"/>
+        <attr name="android:progress"/>
+        <attr name="towards">
+            <flag name="left_to_right" value="0"/>
+            <flag name="right_left_to" value="1"/>
+            <flag name="top_to_bottom" value="2"/>
+            <flag name="bottom_to_top" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_corner_radius" format="dimension"/>
+        <attr name="riv_corner_radius_top_left" format="dimension"/>
+        <attr name="riv_corner_radius_top_right" format="dimension"/>
+        <attr name="riv_corner_radius_bottom_left" format="dimension"/>
+        <attr name="riv_corner_radius_bottom_right" format="dimension"/>
+        <attr name="riv_border_width" format="dimension"/>
+        <attr name="riv_border_color" format="color"/>
+        <attr name="riv_mutate_background" format="boolean"/>
+        <attr name="riv_oval" format="boolean"/>
+        <attr name="android:scaleType"/>
+        <attr name="riv_tile_mode">
+            <enum name="clamp" value="0"/>
+            <enum name="repeat" value="1"/>
+            <enum name="mirror" value="2"/>
+        </attr>
+        <attr name="riv_tile_mode_x">
+            <enum name="clamp" value="0"/>
+            <enum name="repeat" value="1"/>
+            <enum name="mirror" value="2"/>
+        </attr>
+        <attr name="riv_tile_mode_y">
+            <enum name="clamp" value="0"/>
+            <enum name="repeat" value="1"/>
+            <enum name="mirror" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CropImageView">
+        <attr name="cropMaskColor" format="color"/>
+        <attr name="cropBorderColor" format="color"/>
+        <attr name="cropBorderWidth" format="dimension"/>
+        <attr name="cropFocusWidth" format="dimension"/>
+        <attr name="cropFocusHeight" format="dimension"/>
+        <attr name="cropStyle" format="enum">
+            <enum name="rectangle" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <attr name="lineColor" format="color"/>
+    <!--滚轮选择器-->
+    <declare-styleable name="WheelView">
+        <attr name="unitHeight" format="dimension"/>
+        <attr name="itemNumber" format="integer"/>
+
+        <attr name="normalTextColor" format="color"/>
+        <attr name="normalTextSize" format="dimension"/>
+        <attr name="selectedTextColor" format="color"/>
+        <attr name="selectedTextSize" format="dimension"/>
+        <attr name="isCyclic" format="boolean"/>
+
+        <attr name="lineColor"/>
+        <attr name="lineHeight"/>
+
+        <attr name="noEmpty" format="boolean"/>
+        <attr name="isEnable" format="boolean"/>
+    </declare-styleable>
+    <!--字母快速滚动器-->
+    <declare-styleable name="LetterBar">
+        <attr name="android:textColor"/>
+        <attr name="android:textColorHint"/>
+        <attr name="android:textSize"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <array name="action_null"/>
+    <array name="action_refresh">
+        <item>@drawable/eunut_browser_refresh_selector</item>
+    </array>
+    <array name="action_items">
+        <item>@drawable/eunut_browser_refresh_selector</item>
+        <item>操作</item>
+        <item>两行\n文字</item>
+    </array>
+
+    <array name="action_ok">
+        <item>@android:string/ok</item>
+    </array>
+    <array name="action_done">
+        <item>@string/complete</item>
+    </array>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+
+    <dimen name="stgv_margin">8dp</dimen>
+    <dimen name="default_radius">10dp</dimen>
+
+    <dimen name="toast_yoffset">64dp</dimen>
+    <dimen name="multi_picker_height">200dp</dimen>
+
+    <dimen name="line_width">1dp</dimen>
+</resources>
