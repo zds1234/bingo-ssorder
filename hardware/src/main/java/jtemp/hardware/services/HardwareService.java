@@ -2,9 +2,10 @@ package jtemp.hardware.services;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.IBinder;
 
-import jtemp.hardware.hw.HardwareHelper;
+import jtemp.hardware.hw.SerialPortHardwareManager;
 
 
 public class HardwareService extends Service {
@@ -25,24 +26,27 @@ public class HardwareService extends Service {
         public void run() {
             while (!shutdown) {
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                 }
-                openHardware();
+                checkHardware();
             }
         }
     }
 
-    private void openHardware() {
-        HardwareHelper.initHardware(getApplicationContext());
+    private void checkHardware() {
+        SerialPortHardwareManager.checkAndOpenHardware();
     }
 
     private BackgroundThread backgroundThread;
+
+    private Handler handler;
 
     @Override
     public void onCreate() {
         backgroundThread = new BackgroundThread();
         backgroundThread.start();
+        SerialPortHardwareManager.initHardware(getApplicationContext(), handler);
     }
 
     @Override

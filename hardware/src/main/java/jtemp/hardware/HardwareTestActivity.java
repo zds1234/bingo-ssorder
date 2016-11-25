@@ -7,17 +7,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import jtemp.hardware.hw.HardDevice;
-import jtemp.hardware.hw.HardwareHelper;
+import jtemp.hardware.hw.SerialPortHardwareManager;
 
 public class HardwareTestActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        HardwareHelper.initHardware(getApplicationContext());
+        SerialPortHardwareManager.initHardware(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hardware_test);
-        HardwareHelper.setupD2xxLibrary();
+        SerialPortHardwareManager.setupD2xxLibrary();
         refreshHardware();
         findViewById(R.id.refresh).setOnClickListener(this);
         findViewById(R.id.cut).setOnClickListener(this);
@@ -26,7 +25,7 @@ public class HardwareTestActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void refreshHardware() {
-        List<HardDevice> list = HardwareHelper.getDeviceInfoList();
+        List<HardDevice> list = SerialPortHardwareManager.getDeviceInfoList();
         StringBuilder sb = new StringBuilder();
         if (!list.isEmpty()) {
             for (HardDevice hardDevice : list) {
