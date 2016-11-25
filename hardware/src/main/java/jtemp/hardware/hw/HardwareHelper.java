@@ -1,7 +1,6 @@
 package jtemp.hardware.hw;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.ftdi.j2xx.D2xxManager;
 
@@ -30,20 +29,9 @@ public class HardwareHelper {
             }
             HardwareHelper.applicationContext = applicationContext;
             ftD2xx = D2xxManager.getInstance(applicationContext);
-            init = true;
+            ftD2xx.setVIDPID(0x0403, 0xada1);
         } catch (D2xxManager.D2xxException e) {
             e.printStackTrace();
-        }
-    }
-
-    public static void setupD2xxLibrary() {
-        if (init && setup) {
-            return;
-        }
-        if (!ftD2xx.setVIDPID(0x0403, 0xada1)) {
-            Toast.makeText(applicationContext, "ftd2xx setVIDPID Error", Toast.LENGTH_SHORT).show();
-        } else {
-            setup = true;
         }
     }
 

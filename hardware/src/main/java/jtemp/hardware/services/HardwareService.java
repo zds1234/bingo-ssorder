@@ -4,6 +4,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
+import jtemp.hardware.hw.HardwareHelper;
+
 
 public class HardwareService extends Service {
 
@@ -32,6 +34,7 @@ public class HardwareService extends Service {
     }
 
     private void openHardware() {
+        HardwareHelper.initHardware(getApplicationContext());
     }
 
     private BackgroundThread backgroundThread;
@@ -55,7 +58,7 @@ public class HardwareService extends Service {
     @Override
     public void onDestroy() {
         if (backgroundThread != null) {
-            backgroundThread.setShutdown(false);
+            backgroundThread.setShutdown(true);
         }
     }
 }
