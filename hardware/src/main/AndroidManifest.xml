@@ -10,9 +10,6 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
-        <service
-            android:name=".services.HardwareService"
-            android:enabled="true" />
 
         <activity android:name=".HardwareTestActivity"></activity>
     </application>

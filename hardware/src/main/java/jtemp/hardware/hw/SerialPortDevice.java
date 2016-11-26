@@ -36,7 +36,7 @@ public class SerialPortDevice {
     public void openDevice() {
         D2xxManager.DriverParameters parameters = new D2xxManager.DriverParameters();
         device = d2xxManager.openBySerialNumber(SerialPortHardwareManager.getApplicationContext(), devInfo.serialNumber, parameters);
-        if (isDeviceOpen()) {
+        if (device != null && device.isOpen()) {
             device.setBitMode((byte) 0, D2xxManager.FT_BITMODE_RESET);
             device.setBaudRate(9600);
             device.setDataCharacteristics((byte) 8, (byte) 0, (byte) 0);
@@ -51,12 +51,14 @@ public class SerialPortDevice {
 
     @Override
     public String toString() {
-        return String.format("DEVICE:[serialNumber=%s,location=%s]", devInfo.serialNumber, devInfo.location);
+        return String.format("DEVICE:[serialNumber=%s,location=%s,open=%s]", devInfo.serialNumber, devInfo.location, isDeviceOpen());
     }
 
     class DeviceReader extends Thread {
 
         SerialPortDevice device;
+
+        private byte[] readData;
 
         private long lastLoopback = System.currentTimeMillis();
 
@@ -72,8 +74,10 @@ public class SerialPortDevice {
                     read();
                     if (System.currentTimeMillis() - lastLoopback >= 1000) {
                         loopback();
+                        lastLoopback = System.currentTimeMillis();
                     }
                 } catch (Exception e) {
+                    readData = null;
                     e.printStackTrace();
                 }
             }
@@ -83,9 +87,23 @@ public class SerialPortDevice {
             synchronized (device) {
                 int len = device.device.getQueueStatus();
                 if (len > 0) {
-                    byte[] data = new byte[len];
-                    device.device.read(data);
-                    SerialPortHardwareManager.onDeviceReadData(device, data);
+                    if (readData == null) {
+                        readData = new byte[len];
+                        device.device.read(readData);
+                    } else {
+                        byte[] data = new byte[len];
+                        device.device.read(data);
+                        byte[] temp = new byte[readData.length + data.length];
+                        System.arraycopy(readData, 0, temp, 0, readData.length);
+                        System.arraycopy(data, 0, temp, readData.length, data.length);
+                        readData = temp;
+                    }
+                    return;
+                }
+                if (readData != null) {
+                    byte[] temp = readData;
+                    readData = null;
+                    SerialPortHardwareManager.onDeviceReadData(device, temp);
                 }
             }
         }

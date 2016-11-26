@@ -15,6 +15,8 @@ import jtemp.bingossorder.event.AppEventListener;
 import jtemp.bingossorder.gui.AdFragment;
 import jtemp.bingossorder.gui.MainContentFragment;
 import jtemp.bingossorder.gui.TitleFragment;
+import jtemp.hardware.hw.HardwareCheckThread;
+import jtemp.hardware.hw.SerialPortHardwareManager;
 
 /**
  * 首页
@@ -30,11 +32,18 @@ public class MainActivity extends AppCompatActivity implements AppEventListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SerialPortHardwareManager.initHardware(getApplicationContext());
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         eventHandler = new AppEventHandler(this);
         initFragment();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        HardwareCheckThread.startHardwareCheck();
     }
 
     private void initFragment() {
@@ -64,5 +73,10 @@ public class MainActivity extends AppCompatActivity implements AppEventListener 
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        HardwareCheckThread.shutdown();
     }
 }

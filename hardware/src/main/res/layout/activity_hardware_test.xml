@@ -11,12 +11,6 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="刷新" />
-
-        <Button
             android:id="@+id/print"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,12 +21,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="切纸" />
-
-        <Button
-            android:id="@+id/read"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="读码" />
     </LinearLayout>
 
     <ScrollView
@@ -54,7 +42,7 @@
             <TextView
                 android:id="@+id/device_info"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:text="" />
 
             <View
