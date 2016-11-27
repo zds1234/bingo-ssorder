@@ -25,6 +25,8 @@ public class FoodSpec extends DataSupport {
     @Column(nullable = true, unique = true)
     private String specName;
 
+    private String ext;
+
     public long getId() {
         return id;
     }
@@ -47,5 +49,13 @@ public class FoodSpec extends DataSupport {
 
     public void setSpecName(String specName) {
         this.specName = specName;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
     }
 }

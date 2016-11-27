@@ -18,7 +18,7 @@ public class Food extends DataSupport {
     /**
      * 类别
      */
-    private int categoryId;
+    private long categoryId;
 
     /**
      * 名称
@@ -49,7 +49,7 @@ public class Food extends DataSupport {
     /**
      * 关联菜品
      */
-    private String relations;
+    private String associated;
 
     /**
      * 菜品规格
@@ -64,13 +64,15 @@ public class Food extends DataSupport {
      * 关联菜品
      */
     @Column(ignore = true)
-    private List<Food> foodRelations;
+    private List<Food> foodAssociated;
 
     /**
      * 菜品规格
      */
     @Column(ignore = true)
     private List<FoodSpec> foodSpec;
+
+    private String ext;
 
     public long getId() {
         return id;
@@ -80,11 +82,11 @@ public class Food extends DataSupport {
         this.id = id;
     }
 
-    public int getCategoryId() {
+    public long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -136,12 +138,12 @@ public class Food extends DataSupport {
         this.image = image;
     }
 
-    public String getRelations() {
-        return relations;
+    public String getAssociated() {
+        return associated;
     }
 
-    public void setRelations(String relations) {
-        this.relations = relations;
+    public void setAssociated(String associated) {
+        this.associated = associated;
     }
 
     public String getSpec() {
@@ -160,12 +162,12 @@ public class Food extends DataSupport {
         this.foodCategory = foodCategory;
     }
 
-    public List<Food> getFoodRelations() {
-        return foodRelations;
+    public List<Food> getFoodAssociated() {
+        return foodAssociated;
     }
 
-    public void setFoodRelations(List<Food> foodRelations) {
-        this.foodRelations = foodRelations;
+    public void setFoodAssociated(List<Food> foodAssociated) {
+        this.foodAssociated = foodAssociated;
     }
 
     public List<FoodSpec> getFoodSpec() {
@@ -174,5 +176,13 @@ public class Food extends DataSupport {
 
     public void setFoodSpec(List<FoodSpec> foodSpec) {
         this.foodSpec = foodSpec;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
     }
 }

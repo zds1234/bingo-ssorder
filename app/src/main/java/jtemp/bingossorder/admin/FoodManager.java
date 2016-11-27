@@ -2,14 +2,15 @@ package jtemp.bingossorder.admin;
 
 import org.litepal.crud.DataSupport;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import jtemp.bingossorder.code.ErrorCode;
 import jtemp.bingossorder.code.FoodSpecType;
+import jtemp.bingossorder.entity.Food;
 import jtemp.bingossorder.entity.FoodCategory;
 import jtemp.bingossorder.entity.FoodSpec;
 
@@ -28,24 +29,24 @@ public final class FoodManager {
      * @param purchaseLimit
      * @param sort
      * @param combo
-     * @param relations
+     * @param associations  关联菜品
      * @return
      */
     public static ErrorCode addFoodCategory(String name,
                                             int purchaseLimit,
                                             int sort,
                                             boolean combo,
-                                            FoodCategory... relations) {
+                                            FoodCategory... associations) {
 
         if (DataSupport.isExist(FoodCategory.class, "name=?", name)) {
             return ErrorCode.FOOD_CATEGORY_EXISTS;
         }
-        FoodCategory foodCategory = createFoodCategory(name, purchaseLimit, sort, combo, relations);
+        FoodCategory foodCategory = createFoodCategory(name, purchaseLimit, sort, combo, associations);
         foodCategory.save();
         return ErrorCode.SUCCESS;
     }
 
-    private static FoodCategory createFoodCategory(String name, int purchaseLimit, int sort, boolean combo, FoodCategory... relations) {
+    private static FoodCategory createFoodCategory(String name, int purchaseLimit, int sort, boolean combo, FoodCategory... associations) {
         FoodCategory category = new FoodCategory();
         category.setName(name);
         category.setPurchaseLimit(purchaseLimit);
@@ -53,23 +54,24 @@ public final class FoodManager {
         category.setCombo(combo);
         if (category.isCombo()) {
             StringBuilder sb = new StringBuilder();
-            category.setRelationsCategory(Arrays.asList(relations));
-            for (FoodCategory c : relations) {
+            category.setAssociatedCategory(Arrays.asList(associations));
+            for (FoodCategory c : associations) {
                 sb.append(c.getId()).append(";");
             }
-            category.setRelations(sb.toString());
+            category.setAssociated(sb.toString());
         }
         return category;
     }
 
     /**
-     * 删除菜品类别
+     * 删除菜品类别，会同时将该类别下的所有菜品删除
      *
      * @param id
      * @return
      */
     public static ErrorCode deleteFoodCategory(long id) {
         DataSupport.delete(FoodCategory.class, id);
+        DataSupport.deleteAll(Food.class, "categoryId=?", String.valueOf(id));
         return ErrorCode.SUCCESS;
     }
 
@@ -109,20 +111,39 @@ public final class FoodManager {
             }
         });
         for (FoodCategory category : list) {
-            if (category.isCombo()) {
-                List<FoodCategory> relationCategory = new ArrayList<>();
-                String[] array = category.getRelations().split(";");
-                for (String rid : array) {
-                    for (FoodCategory fc : list) {
-                        if (rid.equals(String.valueOf(fc.getId()))) {
-                            relationCategory.add(fc);
-                        }
-                    }
-                }
-                category.setRelationsCategory(relationCategory);
-            }
+            parseFoodCategoryAssociations(category);
         }
         return list;
+    }
+
+    private static void parseFoodCategoryAssociations(FoodCategory category) {
+        if (category != null && category.isCombo()) {
+            String[] array = category.getAssociated().split(";");
+            long[] ids = new long[array.length];
+            for (int i = 0; i < array.length; i++) {
+                ids[i] = Long.parseLong(array[i]);
+            }
+            List<FoodCategory> associatedCategory = FoodCategory.findAll(FoodCategory.class, ids);
+            for (Iterator<FoodCategory> it = associatedCategory.iterator(); it.hasNext(); ) {
+                FoodCategory c = it.next();
+                if (c == null || c.isCombo()) {
+                    it.remove();
+                }
+            }
+            category.setAssociatedCategory(associatedCategory);
+        }
+    }
+
+    /**
+     * 查找菜品类别
+     *
+     * @param id
+     * @return
+     */
+    public static FoodCategory findFoodCategory(long id) {
+        FoodCategory category = DataSupport.find(FoodCategory.class, id);
+        parseFoodCategoryAssociations(category);
+        return category;
     }
 
     //---------菜品规格-----------
@@ -164,6 +185,125 @@ public final class FoodManager {
 
     //-----------菜品-----------
 
+    /**
+     * 添加食品
+     *
+     * @param foodCategory
+     * @param name
+     * @param nameEn
+     * @param price
+     * @param recommend
+     * @param saleable
+     * @param image
+     * @param foodAssociations
+     * @param foodSpec
+     * @return
+     */
+    public static ErrorCode addFood(FoodCategory foodCategory,
+                                    String name,
+                                    String nameEn,
+                                    double price,
+                                    boolean recommend,
+                                    boolean saleable,
+                                    String image,
+                                    List<Food> foodAssociations,
+                                    List<FoodSpec> foodSpec) {
 
+        if (foodCategory.isCombo() && foodAssociations == null || foodAssociations.isEmpty()) {
+            return ErrorCode.FOOD_PLS_CHOOSE_RELATION;
+        }
+
+        Food food = createFood(foodCategory, name, nameEn, price, recommend, saleable, image, foodAssociations, foodSpec);
+        food.save();
+        return ErrorCode.SUCCESS;
+    }
+
+    private static Food createFood(FoodCategory foodCategory, String name, String nameEn, double price, boolean recommend, boolean saleable, String image, List<Food> foodAssociations, List<FoodSpec> foodSpec) {
+        Food food = new Food();
+        food.setFoodCategory(foodCategory);
+        food.setCategoryId(foodCategory.getId());
+        food.setName(name);
+        food.setNameEn(nameEn);
+        food.setPrice(price);
+        food.setRecommend(recommend);
+        food.setSaleable(saleable);
+        food.setImage(image);
+        if (foodCategory.isCombo()) {
+            StringBuilder associated = new StringBuilder();
+            for (Food f : foodAssociations) {
+                associated.append(f.getId()).append(";");
+            }
+            foodCategory.setAssociated(associated.toString());
+            food.setFoodAssociated(foodAssociations);
+        }
+        if (foodSpec != null && !foodSpec.isEmpty()) {
+            StringBuilder str = new StringBuilder();
+            for (FoodSpec spec : foodSpec) {
+                str.append(spec.getId()).append(";");
+            }
+            food.setSpec(str.toString());
+            food.setFoodSpec(foodSpec);
+        }
+        return food;
+    }
+
+    /**
+     * 更新菜品
+     *
+     * @param id
+     * @param foodCategory
+     * @param name
+     * @param nameEn
+     * @param price
+     * @param recommend
+     * @param saleable
+     * @param image
+     * @param foodRelations
+     * @param foodSpec
+     * @return
+     */
+    public static ErrorCode updateFood(long id,
+                                       FoodCategory foodCategory,
+                                       String name,
+                                       String nameEn,
+                                       double price,
+                                       boolean recommend,
+                                       boolean saleable,
+                                       String image,
+                                       List<Food> foodRelations,
+                                       List<FoodSpec> foodSpec) {
+
+        if (foodCategory.isCombo() && foodRelations == null || foodRelations.isEmpty()) {
+            return ErrorCode.FOOD_PLS_CHOOSE_RELATION;
+        }
+        Food food = createFood(foodCategory, name, nameEn, price, recommend, saleable, image, foodRelations, foodSpec);
+        food.update(id);
+        return ErrorCode.SUCCESS;
+    }
+
+    /**
+     * 查找所有菜品
+     *
+     * @return
+     */
+    public static List<Food> findAllFood() {
+        List<Food> list = DataSupport.findAll(Food.class);
+        for (Iterator<Food> it = list.iterator(); it.hasNext(); ) {
+            Food food = it.next();
+            if (!parseFoodAssociations(food)) {
+                it.remove();
+            }
+        }
+        return list;
+    }
+
+    private static boolean parseFoodAssociations(Food food) {
+        FoodCategory category = findFoodCategory(food.getCategoryId());
+        if (category == null) {
+            return false;
+        }
+        food.setFoodCategory(category);
+        return true;
+    }
 
 }

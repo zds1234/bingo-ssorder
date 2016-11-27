@@ -37,10 +37,12 @@ public class FoodCategory extends DataSupport {
     /**
      * 关联菜品类别
      */
-    private String relations;
+    private String associated;
 
     @Column(ignore = true)
-    private List<FoodCategory> relationsCategory = new ArrayList<>();
+    private List<FoodCategory> associatedCategory = new ArrayList<>();
+
+    private String ext;
 
     public long getId() {
         return id;
@@ -82,19 +84,27 @@ public class FoodCategory extends DataSupport {
         this.combo = combo;
     }
 
-    public String getRelations() {
-        return relations;
+    public String getAssociated() {
+        return associated;
     }
 
-    public void setRelations(String relations) {
-        this.relations = relations;
+    public void setAssociated(String associated) {
+        this.associated = associated;
     }
 
-    public List<FoodCategory> getRelationsCategory() {
-        return relationsCategory;
+    public List<FoodCategory> getAssociatedCategory() {
+        return associatedCategory;
     }
 
-    public void setRelationsCategory(List<FoodCategory> relationsCategory) {
-        this.relationsCategory = relationsCategory;
+    public void setAssociatedCategory(List<FoodCategory> associatedCategory) {
+        this.associatedCategory = associatedCategory;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
     }
 }

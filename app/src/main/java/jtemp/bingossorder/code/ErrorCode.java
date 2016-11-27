@@ -9,6 +9,7 @@ public enum ErrorCode {
     SUCCESS(0, "success"),
 
     FOOD_CATEGORY_EXISTS(1, "菜品类别已存在"),
+    FOOD_PLS_CHOOSE_RELATION(2, "请选择关联菜品"),
 
     //
     ;
