@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.entity.EntityFoodCategory;
+import jtemp.bingossorder.entity.FoodCategory;
 import jtemp.bingossorder.gui.AdminFoodMgrCategoryFragment;
 
 /**
@@ -21,7 +21,7 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
 
     private AdminFoodMgrCategoryFragment adminFoodMgrCategoryFragment;
 
-    private List<EntityFoodCategory> data = new ArrayList<>();
+    private List<FoodCategory> data = new ArrayList<>();
 
     public FoodCategoryListAdapter(AdminFoodMgrCategoryFragment adminFoodMgrCategoryFragment) {
         this.adminFoodMgrCategoryFragment = adminFoodMgrCategoryFragment;
@@ -41,13 +41,13 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
 
     private void onItemClick(View v) {
         Integer position = (Integer) v.getTag();
-        EntityFoodCategory category = data.get(position);
+        FoodCategory category = data.get(position);
         adminFoodMgrCategoryFragment.showEditCategoryModel(category);
     }
 
     @Override
     public void onBindViewHolder(FoodCategoryListAdapter.ViewHolder holder, int position) {
-        EntityFoodCategory entity = data.get(position);
+        FoodCategory entity = data.get(position);
         holder.setData(entity);
         holder.itemView.setTag(new Integer(position));
     }
@@ -57,7 +57,7 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
         return data.size();
     }
 
-    public void setData(List<EntityFoodCategory> list) {
+    public void setData(List<FoodCategory> list) {
         data.clear();
         if (list != null) {
             data.addAll(list);
@@ -71,7 +71,7 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
             super(itemView);
         }
 
-        public void setData(EntityFoodCategory entity) {
+        public void setData(FoodCategory entity) {
             TextView view = (TextView) itemView.findViewById(R.id.food_category_info);
             StringBuilder sb = new StringBuilder();
             sb.append(entity.getCategoryName());

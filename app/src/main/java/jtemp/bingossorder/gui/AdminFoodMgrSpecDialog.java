@@ -12,9 +12,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.admin.AdminFoodManager;
-import jtemp.bingossorder.entity.EntityFoodSpec;
-import jtemp.bingossorder.entity.FoodSpecType;
+import jtemp.bingossorder.admin.FoodManager;
+import jtemp.bingossorder.entity.FoodSpec;
+import jtemp.bingossorder.code.FoodSpecType;
 
 /**
  * Created by ZMS on 2016/11/23.
@@ -57,41 +57,41 @@ public class AdminFoodMgrSpecDialog extends Dialog {
     }
 
     private void deleteSpec() {
-        String specName = name.getText().toString().trim();
-        AdminFoodManager.deleteFoodSpecByName(specName);
-        adminFoodMgrSpecFragment.loadSpecList();
-        hide();
+//        String specName = name.getText().toString().trim();
+//        FoodManager.deleteFoodSpecByName(specName);
+//        adminFoodMgrSpecFragment.loadSpecList();
+//        hide();
     }
 
     private void saveSpec() {
-        String specName = name.getText().toString().trim();
-        if (specName.isEmpty()) {
-            Toast.makeText(getContext(), "请输入名称", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        EntityFoodSpec entityFoodSpec = new EntityFoodSpec();
-        switch (spec.getCheckedRadioButtonId()) {
-            case R.id.food_spec_size:
-                entityFoodSpec.setSpecType(FoodSpecType.SIZE.name());
-                break;
-            case R.id.food_spec_flavour:
-                entityFoodSpec.setSpecType(FoodSpecType.FLAVOUR.name());
-                break;
-            case R.id.food_spec_avoid:
-                entityFoodSpec.setSpecType(FoodSpecType.AVOID.name());
-                break;
-            default:
-                break;
-        }
-        entityFoodSpec.setSpecName(specName);
-        AdminFoodManager.saveFoodSpec(entityFoodSpec);
-
-        adminFoodMgrSpecFragment.loadSpecList();
-        hide();
+//        String specName = name.getText().toString().trim();
+//        if (specName.isEmpty()) {
+//            Toast.makeText(getContext(), "请输入名称", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        FoodSpec entityFoodSpec = new FoodSpec();
+//        switch (spec.getCheckedRadioButtonId()) {
+//            case R.id.food_spec_size:
+//                entityFoodSpec.setSpecType(FoodSpecType.SIZE.name());
+//                break;
+//            case R.id.food_spec_flavour:
+//                entityFoodSpec.setSpecType(FoodSpecType.FLAVOUR.name());
+//                break;
+//            case R.id.food_spec_avoid:
+//                entityFoodSpec.setSpecType(FoodSpecType.AVOID.name());
+//                break;
+//            default:
+//                break;
+//        }
+//        entityFoodSpec.setSpecName(specName);
+//        FoodManager.saveFoodSpec(entityFoodSpec);
+//
+//        adminFoodMgrSpecFragment.loadSpecList();
+//        hide();
     }
 
-    public void setSpecData(EntityFoodSpec entityFoodSpec) {
+    public void setSpecData(FoodSpec entityFoodSpec) {
         if (entityFoodSpec != null) {
             name.setText(entityFoodSpec.getSpecName());
             FoodSpecType foodSpecType = FoodSpecType.valueOf(entityFoodSpec.getSpecType());

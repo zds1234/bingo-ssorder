@@ -1,4 +1,4 @@
-package jtemp.bingossorder.entity;
+package jtemp.bingossorder.code;
 
 /**
  * Created by ZMS on 2016/11/23.

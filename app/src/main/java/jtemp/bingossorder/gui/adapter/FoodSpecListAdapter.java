@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.entity.EntityFoodSpec;
-import jtemp.bingossorder.entity.FoodSpecType;
+import jtemp.bingossorder.entity.FoodSpec;
+import jtemp.bingossorder.code.FoodSpecType;
 import jtemp.bingossorder.gui.AdminFoodMgrSpecFragment;
 
 /**
@@ -20,7 +20,7 @@ import jtemp.bingossorder.gui.AdminFoodMgrSpecFragment;
 
 public class FoodSpecListAdapter extends RecyclerView.Adapter<FoodSpecListAdapter.ViewHolder> {
 
-    private List<EntityFoodSpec> data = new ArrayList<>();
+    private List<FoodSpec> data = new ArrayList<>();
 
     private AdminFoodMgrSpecFragment adminFoodMgrSpecFragment;
 
@@ -41,13 +41,13 @@ public class FoodSpecListAdapter extends RecyclerView.Adapter<FoodSpecListAdapte
     }
 
     private void onItemClick(View v) {
-        EntityFoodSpec entityFoodSpec = (EntityFoodSpec) v.getTag();
+        FoodSpec entityFoodSpec = (FoodSpec) v.getTag();
         adminFoodMgrSpecFragment.showEditSpecModel(entityFoodSpec);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        EntityFoodSpec entityFoodSpec = data.get(position);
+        FoodSpec entityFoodSpec = data.get(position);
         holder.itemView.setTag(entityFoodSpec);
         holder.setData(entityFoodSpec);
     }
@@ -57,7 +57,7 @@ public class FoodSpecListAdapter extends RecyclerView.Adapter<FoodSpecListAdapte
         return data.size();
     }
 
-    public void setData(List<EntityFoodSpec> data) {
+    public void setData(List<FoodSpec> data) {
         this.data.clear();
         if (data != null) {
             this.data.addAll(data);
@@ -71,7 +71,7 @@ public class FoodSpecListAdapter extends RecyclerView.Adapter<FoodSpecListAdapte
             super(itemView);
         }
 
-        public void setData(EntityFoodSpec entityFoodSpec) {
+        public void setData(FoodSpec entityFoodSpec) {
             TextView textView = (TextView) this.itemView.findViewById(R.id.food_spec_info);
             FoodSpecType type = FoodSpecType.valueOf(entityFoodSpec.getSpecType());
             textView.setText(type.getName() + " : " + entityFoodSpec.getSpecName());

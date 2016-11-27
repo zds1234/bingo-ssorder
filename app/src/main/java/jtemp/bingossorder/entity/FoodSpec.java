@@ -5,24 +5,31 @@ import org.litepal.crud.DataSupport;
 
 /**
  * Created by ZMS on 2016/11/23.
+ * 菜品规格
  */
 
-public class EntityFoodSpec extends DataSupport {
+public class FoodSpec extends DataSupport {
 
     @Column(nullable = false, unique = true)
-    private int id;
+    private long id;
 
+    /**
+     * 规格类别
+     */
     @Column(nullable = false)
     private String specType;
 
+    /**
+     * 规格名称
+     */
     @Column(nullable = true, unique = true)
     private String specName;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

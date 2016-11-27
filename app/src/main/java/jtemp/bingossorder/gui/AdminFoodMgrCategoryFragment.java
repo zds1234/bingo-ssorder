@@ -14,8 +14,8 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.admin.AdminFoodManager;
-import jtemp.bingossorder.entity.EntityFoodCategory;
+import jtemp.bingossorder.admin.FoodManager;
+import jtemp.bingossorder.entity.FoodCategory;
 import jtemp.bingossorder.gui.adapter.FoodCategoryListAdapter;
 import jtemp.bingossorder.utils.AndroidUtils;
 
@@ -72,15 +72,15 @@ public class AdminFoodMgrCategoryFragment extends Fragment {
         dialog.show();
     }
 
-    public void showEditCategoryModel(EntityFoodCategory foodCategory) {
+    public void showEditCategoryModel(FoodCategory foodCategory) {
         dialog.setTitle("菜品编辑");
         dialog.initContent(foodCategory);
         dialog.show();
     }
 
     public void loadCategoryList() {
-        List<EntityFoodCategory> list = AdminFoodManager.findAllCategory();
-        foodCategoryListAdapter.setData(list);
+//        List<FoodCategory> list = FoodManager.findAllCategory();
+//        foodCategoryListAdapter.setData(list);
     }
 
     @Override

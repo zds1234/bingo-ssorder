@@ -32,11 +32,11 @@ import butterknife.OnClick;
 import jtemp.bingossorder.Const;
 import jtemp.bingossorder.activity.AdminFoodListByCategoryActivity;
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.admin.AdminFoodManager;
-import jtemp.bingossorder.entity.EntityFood;
-import jtemp.bingossorder.entity.EntityFoodCategory;
-import jtemp.bingossorder.entity.EntityFoodSpec;
-import jtemp.bingossorder.entity.FoodSpecType;
+import jtemp.bingossorder.admin.FoodManager;
+import jtemp.bingossorder.entity.Food;
+import jtemp.bingossorder.entity.FoodCategory;
+import jtemp.bingossorder.entity.FoodSpec;
+import jtemp.bingossorder.code.FoodSpecType;
 import jtemp.bingossorder.utils.AndroidUtils;
 import jtemp.bingossorder.utils.FileUtils;
 
@@ -132,68 +132,68 @@ public class AdminFoodMgrEditFragment extends Fragment {
     }
 
     private void initContent(View view) {
-        food_edit_types.removeAllViewsInLayout();
-        List<EntityFoodCategory> foodCategoryList = AdminFoodManager.findAllCategory();
-        for (EntityFoodCategory category : foodCategoryList) {
-            RadioButton button = new RadioButton(getContext());
-            button.setText(category.getCategoryName());
-            button.setTag(category);
-            food_edit_types.addView(button);
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onSelectCategory((EntityFoodCategory) v.getTag());
-                }
-            });
-        }
-
-        food_edit_size.removeAllViewsInLayout();
-        food_edit_avoid.removeAllViewsInLayout();
-        food_edit_flavour.removeAllViewsInLayout();
-        List<EntityFoodSpec> foodSpecList = AdminFoodManager.findAllSpec();
-        for (EntityFoodSpec spec : foodSpecList) {
-            CheckBox checkBox = new CheckBox(getContext());
-            checkBox.setText(spec.getSpecName());
-            checkBox.setTag(spec);
-            switch (FoodSpecType.valueOf(spec.getSpecType())) {
-                case SIZE:
-                    food_edit_size.addView(checkBox);
-                    break;
-                case FLAVOUR:
-                    food_edit_flavour.addView(checkBox);
-                    break;
-                case AVOID:
-                    food_edit_avoid.addView(checkBox);
-                    break;
-            }
-        }
+//        food_edit_types.removeAllViewsInLayout();
+//        List<FoodCategory> foodCategoryList = FoodManager.findAllCategory();
+//        for (FoodCategory category : foodCategoryList) {
+//            RadioButton button = new RadioButton(getContext());
+//            button.setText(category.getCategoryName());
+//            button.setTag(category);
+//            food_edit_types.addView(button);
+//            button.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    onSelectCategory((FoodCategory) v.getTag());
+//                }
+//            });
+//        }
+//
+//        food_edit_size.removeAllViewsInLayout();
+//        food_edit_avoid.removeAllViewsInLayout();
+//        food_edit_flavour.removeAllViewsInLayout();
+//        List<FoodSpec> foodSpecList = FoodManager.findAllSpec();
+//        for (FoodSpec spec : foodSpecList) {
+//            CheckBox checkBox = new CheckBox(getContext());
+//            checkBox.setText(spec.getSpecName());
+//            checkBox.setTag(spec);
+//            switch (FoodSpecType.valueOf(spec.getSpecType())) {
+//                case SIZE:
+//                    food_edit_size.addView(checkBox);
+//                    break;
+//                case FLAVOUR:
+//                    food_edit_flavour.addView(checkBox);
+//                    break;
+//                case AVOID:
+//                    food_edit_avoid.addView(checkBox);
+//                    break;
+//            }
+//        }
     }
 
-    private void onSelectCategory(EntityFoodCategory category) {
-        relationCategoryView.clear();
-        foodRelationContainer.removeAllViewsInLayout();
-        if (category.isTaocan()) {
-            for (final EntityFoodCategory relationCategory : category.getRelationCategory().values()) {
-                View view = LayoutInflater.from(getContext()).inflate(R.layout.food_edit_relations_item, null);
-                TextView textView = (TextView) view.findViewById(R.id.food_edit_relation_category);
-                textView.setText(relationCategory.getCategoryName());
-                Button choose = (Button) view.findViewById(R.id.food_edit_relations_choose);
-                view.setTag(relationCategory);
-                relationCategoryView.put(String.valueOf(category.getId()), view);
-                choose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startChooseFoodActivity(relationCategory);
-                    }
-                });
-                foodRelationContainer.addView(view);
-            }
-            foodRelationContainer.setVisibility(View.VISIBLE);
-        } else {
-            foodRelationContainer.setVisibility(View.INVISIBLE);
-        }
-        ViewGroup parent = (ViewGroup) foodRelationContainer.getParent();
-        parent.updateViewLayout(foodRelationContainer, foodRelationContainer.getLayoutParams());
+    private void onSelectCategory(FoodCategory category) {
+//        relationCategoryView.clear();
+//        foodRelationContainer.removeAllViewsInLayout();
+//        if (category.isTaocan()) {
+//            for (final FoodCategory relationCategory : category.getRelationCategory().values()) {
+//                View view = LayoutInflater.from(getContext()).inflate(R.layout.food_edit_relations_item, null);
+//                TextView textView = (TextView) view.findViewById(R.id.food_edit_relation_category);
+//                textView.setText(relationCategory.getCategoryName());
+//                Button choose = (Button) view.findViewById(R.id.food_edit_relations_choose);
+//                view.setTag(relationCategory);
+//                relationCategoryView.put(String.valueOf(category.getId()), view);
+//                choose.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        startChooseFoodActivity(relationCategory);
+//                    }
+//                });
+//                foodRelationContainer.addView(view);
+//            }
+//            foodRelationContainer.setVisibility(View.VISIBLE);
+//        } else {
+//            foodRelationContainer.setVisibility(View.INVISIBLE);
+//        }
+//        ViewGroup parent = (ViewGroup) foodRelationContainer.getParent();
+//        parent.updateViewLayout(foodRelationContainer, foodRelationContainer.getLayoutParams());
     }
 
     /**
@@ -201,55 +201,55 @@ public class AdminFoodMgrEditFragment extends Fragment {
      *
      * @param relationCategory
      */
-    private void startChooseFoodActivity(EntityFoodCategory relationCategory) {
+    private void startChooseFoodActivity(FoodCategory relationCategory) {
         Intent intent = new Intent(getContext(), AdminFoodListByCategoryActivity.class);
         intent.putExtra(AdminFoodListByCategoryActivity.PARAM_FOOD_CATEGORY, String.valueOf(relationCategory.getId()));
         startActivityForResult(intent, R.id.food_edit_relations & 0x0000ffff);
     }
 
     public void saveFood() {
-        AndroidUtils.hideSoftKeyboard(getActivity());
-        RadioButton chooseType = (RadioButton) getView().findViewById(food_edit_types.getCheckedRadioButtonId());
-        if (chooseType == null) {
-            Toast.makeText(getContext(), "请选择菜品类型", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        EntityFoodCategory category = (EntityFoodCategory) chooseType.getTag();
-
-        String name = foodName.getText().toString().trim();
-        if (name.isEmpty()) {
-            Toast.makeText(getContext(), "请输入菜品名称", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String nameEn = foodNameEn.getText().toString().trim();
-
-        double price = -1;
-        try {
-            price = Double.parseDouble(this.price.getText().toString().trim());
-        } catch (Exception e) {
-        }
-        if (price <= 0) {
-            Toast.makeText(getContext(), "请输入菜品价格", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        boolean recommend = this.recommend.isChecked();
-        boolean saleable = this.saleable.isChecked();
-        if (imagePath == null || imagePath.trim().isEmpty()) {
-            Toast.makeText(getContext(), "请选择图像", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        Toast.makeText(getContext(), imagePath, Toast.LENGTH_SHORT).show();
-
-        EntityFood food = new EntityFood();
-        food.setEntityFoodCategory(category);
-        food.setName(name);
-        food.setNameEn(nameEn);
-        food.setPrice(price);
-        food.setRecommend(recommend);
-        food.setSaleable(saleable);
-        food.setImage(FileUtils.readBytes(imagePath));
-        AdminFoodManager.saveFood(food);
+//        AndroidUtils.hideSoftKeyboard(getActivity());
+//        RadioButton chooseType = (RadioButton) getView().findViewById(food_edit_types.getCheckedRadioButtonId());
+//        if (chooseType == null) {
+//            Toast.makeText(getContext(), "请选择菜品类型", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        FoodCategory category = (FoodCategory) chooseType.getTag();
+//
+//        String name = foodName.getText().toString().trim();
+//        if (name.isEmpty()) {
+//            Toast.makeText(getContext(), "请输入菜品名称", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        String nameEn = foodNameEn.getText().toString().trim();
+//
+//        double price = -1;
+//        try {
+//            price = Double.parseDouble(this.price.getText().toString().trim());
+//        } catch (Exception e) {
+//        }
+//        if (price <= 0) {
+//            Toast.makeText(getContext(), "请输入菜品价格", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        boolean recommend = this.recommend.isChecked();
+//        boolean saleable = this.saleable.isChecked();
+//        if (imagePath == null || imagePath.trim().isEmpty()) {
+//            Toast.makeText(getContext(), "请选择图像", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//        Toast.makeText(getContext(), imagePath, Toast.LENGTH_SHORT).show();
+//
+//        Food food = new Food();
+//        food.setEntityFoodCategory(category);
+//        food.setName(name);
+//        food.setNameEn(nameEn);
+//        food.setPrice(price);
+//        food.setRecommend(recommend);
+//        food.setSaleable(saleable);
+//        food.setImage(FileUtils.readBytes(imagePath));
+//        FoodManager.saveFood(food);
     }
 
     @Override

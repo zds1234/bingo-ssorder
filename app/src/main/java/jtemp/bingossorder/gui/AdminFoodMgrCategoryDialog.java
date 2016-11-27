@@ -22,8 +22,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.admin.AdminFoodManager;
-import jtemp.bingossorder.entity.EntityFoodCategory;
+import jtemp.bingossorder.admin.FoodManager;
+import jtemp.bingossorder.entity.FoodCategory;
 
 /**
  * Created by ZMS on 2016/11/22.
@@ -58,7 +58,7 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
     @BindView(R.id.food_category_taocan_relation)
     ViewGroup categoryRelation;
 
-    EntityFoodCategory foodCategory;
+    FoodCategory foodCategory;
 
     AdminFoodMgrCategoryFragment adminFoodMgrCategoryFragment;
 
@@ -69,7 +69,7 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
         ButterKnife.bind(this);
     }
 
-    public void initContent(EntityFoodCategory foodCategory) {
+    public void initContent(FoodCategory foodCategory) {
         if (foodCategory == null) {
             initContentAddCategory();
         } else {
@@ -89,24 +89,24 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
         categoryTaocanSwitch.setChecked(false);
         categoryName.setText("");
 
-        Integer maxId = DataSupport.max(EntityFoodCategory.class, "id", Integer.class);
+        Integer maxId = DataSupport.max(FoodCategory.class, "id", Integer.class);
         maxId = (maxId == null ? 1 : maxId + 1);
         categoryOrder.setText(String.valueOf(maxId));
     }
 
-    private void initContentEditCategory(EntityFoodCategory foodCategory) {
-        this.foodCategory = foodCategory;
-        //设置可见性
-        categoryAdd.setVisibility(View.INVISIBLE);
-        categoryDelete.setVisibility(View.VISIBLE);
-        categoryUpdate.setVisibility(View.VISIBLE);
-
-        //设置默认值
-        categoryName.setText(foodCategory.getCategoryName());
-        categoryOrder.setText(String.valueOf(foodCategory.getCategoryOrder()));
-        categoryLimit.setText(String.valueOf(foodCategory.getPurchaseLimit()));
-        categoryTaocanSwitch.setChecked(foodCategory.isTaocan());
-        switchTaoCan();
+    private void initContentEditCategory(FoodCategory foodCategory) {
+//        this.foodCategory = foodCategory;
+//        //设置可见性
+//        categoryAdd.setVisibility(View.INVISIBLE);
+//        categoryDelete.setVisibility(View.VISIBLE);
+//        categoryUpdate.setVisibility(View.VISIBLE);
+//
+//        //设置默认值
+//        categoryName.setText(foodCategory.getCategoryName());
+//        categoryOrder.setText(String.valueOf(foodCategory.getCategoryOrder()));
+//        categoryLimit.setText(String.valueOf(foodCategory.getPurchaseLimit()));
+//        categoryTaocanSwitch.setChecked(foodCategory.isTaocan());
+//        switchTaoCan();
     }
 
     @OnClick({R.id.food_category_taocan, R.id.food_category_add, R.id.food_category_delete, R.id.food_category_update})
@@ -131,39 +131,39 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
 
     private void updateFoodCategory() {
         if (foodCategory != null) {
-            try {
-                String name = categoryName.getText().toString().trim();
-                int limit = Integer.parseInt(categoryLimit.getText().toString().trim());
-                int order = Integer.parseInt(categoryOrder.getText().toString().trim());
-                boolean taocan = isSwitchedTaoCan();
-                if (name == null || name.isEmpty()) {
-                    Toast.makeText(getContext(), "请输入菜品名称", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                foodCategory.setTaocan(taocan);
-                foodCategory.getRelationCategory().clear();
-                if (taocan) {
-                    ViewGroup viewGroup = (LinearLayout) findViewById(R.id.food_category_taocan_relation);
-                    int childCount = viewGroup.getChildCount();
-                    for (int i = 0; i < childCount; i++) {
-                        View view = viewGroup.getChildAt(i);
-                        if (view instanceof CheckBox) {
-                            CheckBox box = (CheckBox) view;
-                            if (box.isChecked()) {
-                                foodCategory.addRelationCategory((EntityFoodCategory) box.getTag());
-                            }
-                        }
-                    }
-                }
-                foodCategory.setCategoryName(name);
-                foodCategory.setPurchaseLimit(limit);
-                foodCategory.setCategoryOrder(order);
-                foodCategory.save();
-                AdminFoodManager.saveFoodCategory(foodCategory);
-            } catch (Exception e) {
-                e.printStackTrace();
-                Toast.makeText(getContext(), "请检查输入", Toast.LENGTH_SHORT).show();
-            }
+//            try {
+//                String name = categoryName.getText().toString().trim();
+//                int limit = Integer.parseInt(categoryLimit.getText().toString().trim());
+//                int order = Integer.parseInt(categoryOrder.getText().toString().trim());
+//                boolean taocan = isSwitchedTaoCan();
+//                if (name == null || name.isEmpty()) {
+//                    Toast.makeText(getContext(), "请输入菜品名称", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                foodCategory.setTaocan(taocan);
+//                foodCategory.getRelationCategory().clear();
+//                if (taocan) {
+//                    ViewGroup viewGroup = (LinearLayout) findViewById(R.id.food_category_taocan_relation);
+//                    int childCount = viewGroup.getChildCount();
+//                    for (int i = 0; i < childCount; i++) {
+//                        View view = viewGroup.getChildAt(i);
+//                        if (view instanceof CheckBox) {
+//                            CheckBox box = (CheckBox) view;
+//                            if (box.isChecked()) {
+//                                foodCategory.addRelationCategory((FoodCategory) box.getTag());
+//                            }
+//                        }
+//                    }
+//                }
+//                foodCategory.setCategoryName(name);
+//                foodCategory.setPurchaseLimit(limit);
+//                foodCategory.setCategoryOrder(order);
+//                foodCategory.save();
+//                FoodManager.saveFoodCategory(foodCategory);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                Toast.makeText(getContext(), "请检查输入", Toast.LENGTH_SHORT).show();
+//            }
         }
         adminFoodMgrCategoryFragment.loadCategoryList();
         hide();
@@ -171,7 +171,7 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
 
     private void deleteFoodCategory() {
         if (foodCategory != null) {
-            AdminFoodManager.deleteFoodCategory(foodCategory.getId());
+            FoodManager.deleteFoodCategory(foodCategory.getId());
         }
         adminFoodMgrCategoryFragment.loadCategoryList();
         hide();
@@ -179,40 +179,40 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
 
     private void addFoodCategory() {
         try {
-            String name = categoryName.getText().toString().trim();
-            int limit = Integer.parseInt(categoryLimit.getText().toString().trim());
-            int order = Integer.parseInt(categoryOrder.getText().toString().trim());
-            boolean taocan = isSwitchedTaoCan();
-            if (name == null || name.isEmpty()) {
-                Toast.makeText(getContext(), "请输入菜品名称", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            EntityFoodCategory entityFoodCategory = new EntityFoodCategory();
-            if (taocan) {
-                ViewGroup viewGroup = (LinearLayout) findViewById(R.id.food_category_taocan_relation);
-                int childCount = viewGroup.getChildCount();
-                for (int i = 0; i < childCount; i++) {
-                    View view = viewGroup.getChildAt(i);
-                    if (view instanceof CheckBox) {
-                        CheckBox box = (CheckBox) view;
-                        if (box.isChecked()) {
-                            EntityFoodCategory category = (EntityFoodCategory) box.getTag();
-                            entityFoodCategory.addRelationCategory(category);
-                        }
-                    }
-                }
-            }
-            entityFoodCategory.setCategoryName(name);
-            entityFoodCategory.setPurchaseLimit(limit);
-            entityFoodCategory.setCategoryOrder(order);
-            entityFoodCategory.setTaocan(taocan);
-            if (AdminFoodManager.saveFoodCategoryIfNotExists(entityFoodCategory)) {
-                Toast.makeText(getContext(), "保存成功", Toast.LENGTH_SHORT).show();
-                loadCategoryList();
-                this.hide();
-            } else {
-                Toast.makeText(getContext(), "菜品已存在", Toast.LENGTH_SHORT).show();
-            }
+//            String name = categoryName.getText().toString().trim();
+//            int limit = Integer.parseInt(categoryLimit.getText().toString().trim());
+//            int order = Integer.parseInt(categoryOrder.getText().toString().trim());
+//            boolean taocan = isSwitchedTaoCan();
+//            if (name == null || name.isEmpty()) {
+//                Toast.makeText(getContext(), "请输入菜品名称", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//            FoodCategory entityFoodCategory = new FoodCategory();
+//            if (taocan) {
+//                ViewGroup viewGroup = (LinearLayout) findViewById(R.id.food_category_taocan_relation);
+//                int childCount = viewGroup.getChildCount();
+//                for (int i = 0; i < childCount; i++) {
+//                    View view = viewGroup.getChildAt(i);
+//                    if (view instanceof CheckBox) {
+//                        CheckBox box = (CheckBox) view;
+//                        if (box.isChecked()) {
+//                            FoodCategory category = (FoodCategory) box.getTag();
+//                            entityFoodCategory.addRelationCategory(category);
+//                        }
+//                    }
+//                }
+//            }
+//            entityFoodCategory.setCategoryName(name);
+//            entityFoodCategory.setPurchaseLimit(limit);
+//            entityFoodCategory.setCategoryOrder(order);
+//            entityFoodCategory.setTaocan(taocan);
+//            if (FoodManager.saveFoodCategoryIfNotExists(entityFoodCategory)) {
+//                Toast.makeText(getContext(), "保存成功", Toast.LENGTH_SHORT).show();
+//                loadCategoryList();
+//                this.hide();
+//            } else {
+//                Toast.makeText(getContext(), "菜品已存在", Toast.LENGTH_SHORT).show();
+//            }
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getContext(), "请检查输入", Toast.LENGTH_SHORT).show();
@@ -229,27 +229,27 @@ public class AdminFoodMgrCategoryDialog extends Dialog {
 
     private void switchTaoCan() {
         if (isSwitchedTaoCan()) {
-            categoryRelation.removeAllViewsInLayout();
-            Set<String> relations;
-            if (foodCategory != null) {
-                relations = foodCategory.getRelationCategory().keySet();
-            } else {
-                relations = Collections.emptySet();
-            }
-            List<EntityFoodCategory> list = AdminFoodManager.findAllCategory();
-            for (Iterator<EntityFoodCategory> it = list.iterator(); it.hasNext(); ) {
-                EntityFoodCategory category = it.next();
-                if (!category.isTaocan()) {
-                    CheckBox box = new CheckBox(getContext());
-                    box.setTag(category);
-                    box.setText(category.getCategoryName());
-                    if (relations.contains(category.getCategoryName())) {
-                        box.setChecked(true);
-                    }
-                    categoryRelation.addView(box);
-                }
-            }
-            categoryIsTaocan.setVisibility(View.VISIBLE);
+//            categoryRelation.removeAllViewsInLayout();
+//            Set<String> relations;
+//            if (foodCategory != null) {
+//                relations = foodCategory.getRelationCategory().keySet();
+//            } else {
+//                relations = Collections.emptySet();
+//            }
+//            List<FoodCategory> list = FoodManager.findAllCategory();
+//            for (Iterator<FoodCategory> it = list.iterator(); it.hasNext(); ) {
+//                FoodCategory category = it.next();
+//                if (!category.isTaocan()) {
+//                    CheckBox box = new CheckBox(getContext());
+//                    box.setTag(category);
+//                    box.setText(category.getCategoryName());
+//                    if (relations.contains(category.getCategoryName())) {
+//                        box.setChecked(true);
+//                    }
+//                    categoryRelation.addView(box);
+//                }
+//            }
+//            categoryIsTaocan.setVisibility(View.VISIBLE);
         } else {
             categoryIsTaocan.setVisibility(View.INVISIBLE);
         }

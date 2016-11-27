@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.admin.AdminFoodManager;
-import jtemp.bingossorder.entity.EntityFoodSpec;
+import jtemp.bingossorder.admin.FoodManager;
+import jtemp.bingossorder.entity.FoodSpec;
 import jtemp.bingossorder.gui.adapter.FoodSpecListAdapter;
 
 /**
@@ -53,11 +53,11 @@ public class AdminFoodMgrSpecFragment extends Fragment {
     }
 
     public void loadSpecList() {
-        List<EntityFoodSpec> list = AdminFoodManager.findAllSpec();
-        foodSpecListAdapter.setData(list);
+//        List<FoodSpec> list = FoodManager.findAllSpec();
+//        foodSpecListAdapter.setData(list);
     }
 
-    public void showEditSpecModel(EntityFoodSpec entityFoodSpec) {
+    public void showEditSpecModel(FoodSpec entityFoodSpec) {
         dialog.setTitle("菜品规格");
         dialog.setSpecData(entityFoodSpec);
         dialog.show();

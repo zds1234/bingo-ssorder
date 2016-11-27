@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.admin.AdminManager;
+import jtemp.bingossorder.admin.AdminUserManager;
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.bingossorder.utils.AndroidUtils;
@@ -52,7 +52,7 @@ public class AdminLoginFragment extends Fragment {
 
     private void adminLogin() {
         EditText password = (EditText) view.findViewById(R.id.password);
-        if (AdminManager.isAdminPasswordValidate(password.getText().toString().trim())) {
+        if (AdminUserManager.isAdminPasswordValidate(password.getText().toString().trim())) {
             handler.sendMessage(AppEvent.EVENT_ADMIN_LOGIN_SUCCESS.toMessage(handler));
             AndroidUtils.hideSoftKeyboard(getActivity());
         } else {

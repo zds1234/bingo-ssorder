@@ -10,7 +10,7 @@ import java.util.List;
 
 import jtemp.bingossorder.activity.AdminFoodListByCategoryActivity;
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.entity.EntityFood;
+import jtemp.bingossorder.entity.Food;
 
 /**
  * Created by ZMS on 2016/11/24.
@@ -18,7 +18,7 @@ import jtemp.bingossorder.entity.EntityFood;
 
 public class FoodMultiChooseListAdapter extends RecyclerView.Adapter<FoodMultiChooseListAdapter.ViewHolder> {
 
-    private List<EntityFood> data = new ArrayList<>();
+    private List<Food> data = new ArrayList<>();
 
     private AdminFoodListByCategoryActivity adminFoodListByCategoryActivity;
 
@@ -43,7 +43,7 @@ public class FoodMultiChooseListAdapter extends RecyclerView.Adapter<FoodMultiCh
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        EntityFood food = data.get(position);
+        Food food = data.get(position);
         holder.itemView.setTag(food);
         holder.setData(food);
     }
@@ -59,7 +59,7 @@ public class FoodMultiChooseListAdapter extends RecyclerView.Adapter<FoodMultiCh
             super(itemView);
         }
 
-        public void setData(EntityFood food) {
+        public void setData(Food food) {
         }
     }
 }
