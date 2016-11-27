@@ -14,6 +14,8 @@ public class SerialPortDevice {
     D2xxManager.FtDeviceInfoListNode devInfo;
     D2xxManager d2xxManager;
 
+    boolean readable;
+
     private FT_Device device;
 
     public SerialPortDevice(D2xxManager ftD2xx, D2xxManager.FtDeviceInfoListNode devNode) {
@@ -49,9 +51,13 @@ public class SerialPortDevice {
         }
     }
 
+    public boolean isReadable() {
+        return readable;
+    }
+
     @Override
     public String toString() {
-        return String.format("DEVICE:[serialNumber=%s,location=%s,open=%s]", devInfo.serialNumber, devInfo.location, isDeviceOpen());
+        return String.format("DEVICE:[serialNumber=%s,location=%s,open=%s,readable=%s]", devInfo.serialNumber, devInfo.location, isDeviceOpen(), isReadable());
     }
 
     class DeviceReader extends Thread {
@@ -87,6 +93,7 @@ public class SerialPortDevice {
             synchronized (device) {
                 int len = device.device.getQueueStatus();
                 if (len > 0) {
+                    device.readable = true;
                     if (readData == null) {
                         readData = new byte[len];
                         device.device.read(readData);
