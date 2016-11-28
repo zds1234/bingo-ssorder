@@ -42,7 +42,6 @@ public class HardwareTestActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hardware_test);
         refreshHardware();
-        findViewById(R.id.cut).setOnClickListener(this);
         findViewById(R.id.print).setOnClickListener(this);
         SerialPortHardwareManager.addHandler(handler);
     }
@@ -74,8 +73,7 @@ public class HardwareTestActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.cut) {
-        } else if (v.getId() == R.id.print) {
+        if (v.getId() == R.id.print) {
             print();
         }
     }
