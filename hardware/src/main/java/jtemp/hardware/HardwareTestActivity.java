@@ -87,6 +87,23 @@ public class HardwareTestActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void print() {
-
+        StringBuilder sb = new StringBuilder();
+        sb.append("---------测试---------").append("\n");
+        sb.append("序号：001\n");
+        sb.append("打印时间：").append(sdf.format(new Date())).append("\n");
+        sb.append("账单号：").append("001").append("\n\n");
+        sb.append("----------------------\n");
+        sb.append("品名      数量      价格      金额\n");
+        for (int i = 0; i < 10; i++) {
+            sb.append("米饭      10      1       10\n");
+        }
+        sb.append("----------------------\n");
+        sb.append("总金额 ：").append("10000.0").append("\n");
+        sb.append("\n");
+        sb.append("\n");
+        sb.append("\n");
+        sb.append("\n");
+        sb.append("\n");
+        SerialPortHardwareManager.print(sb.toString());
     }
 }

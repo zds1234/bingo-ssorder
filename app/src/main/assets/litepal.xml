@@ -3,8 +3,9 @@
     <dbname value="ssorder" />
     <version value="5" />
     <list>
-        <mapping class="jtemp.bingossorder.entity.FoodCategory" />
-        <mapping class="jtemp.bingossorder.entity.FoodSpec" />
-        <mapping class="jtemp.bingossorder.entity.Food" />
+        <!--<mapping class="jtemp.bingossorder.entity.FoodCategory" />-->
+        <!--<mapping class="jtemp.bingossorder.entity.FoodSpec" />-->
+        <!--<mapping class="jtemp.bingossorder.entity.Food" />-->
     </list>
+    <storage value="external"></storage>
 </litepal>

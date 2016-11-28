@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements AppEventListener 
 
     @Override
     protected void onDestroy() {
+        super.onDestroy();
         HardwareCheckThread.shutdown();
     }
 }

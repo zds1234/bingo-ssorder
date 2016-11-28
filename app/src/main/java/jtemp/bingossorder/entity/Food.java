@@ -57,19 +57,19 @@ public class Food extends DataSupport {
     private String spec;
 
     //关联
-    @Column(ignore = true)
+//    @Column(ignore = true)
     private FoodCategory foodCategory;
 
     /**
      * 关联菜品
      */
-    @Column(ignore = true)
+//    @Column(ignore = true)
     private List<Food> foodAssociated;
 
     /**
      * 菜品规格
      */
-    @Column(ignore = true)
+//    @Column(ignore = true)
     private List<FoodSpec> foodSpec;
 
     private String ext;

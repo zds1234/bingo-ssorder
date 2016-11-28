@@ -139,4 +139,14 @@ public class SerialPortHardwareManager {
     public static void removeHandler(Handler handler) {
         handlers.remove(handler);
     }
+
+    public static void print(String s) {
+        for (SerialPortDevice device : deviceList.values()) {
+            try {
+                device.print(s);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

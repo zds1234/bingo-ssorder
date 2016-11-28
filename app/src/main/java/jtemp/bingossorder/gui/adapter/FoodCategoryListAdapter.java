@@ -72,20 +72,20 @@ public class FoodCategoryListAdapter extends RecyclerView.Adapter<FoodCategoryLi
         }
 
         public void setData(FoodCategory entity) {
-            TextView view = (TextView) itemView.findViewById(R.id.food_category_info);
-            StringBuilder sb = new StringBuilder();
-            sb.append(entity.getCategoryName());
-            sb.append("    ");
-            if (entity.getPurchaseLimit() > 0) {
-                sb.append("单点限量:").append(entity.getPurchaseLimit());
-            } else {
-                sb.append("无单点限量");
-            }
-            sb.append("    ");
-            if (entity.isTaocan()) {
-                sb.append("套餐类");
-            }
-            view.setText(sb.toString());
+//            TextView view = (TextView) itemView.findViewById(R.id.food_category_info);
+//            StringBuilder sb = new StringBuilder();
+//            sb.append(entity.getCategoryName());
+//            sb.append("    ");
+//            if (entity.getPurchaseLimit() > 0) {
+//                sb.append("单点限量:").append(entity.getPurchaseLimit());
+//            } else {
+//                sb.append("无单点限量");
+//            }
+//            sb.append("    ");
+//            if (entity.isTaocan()) {
+//                sb.append("套餐类");
+//            }
+//            view.setText(sb.toString());
         }
     }
 }

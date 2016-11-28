@@ -5,6 +5,8 @@ import android.util.Log;
 import com.ftdi.j2xx.D2xxManager;
 import com.ftdi.j2xx.FT_Device;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by ZMS on 2016/11/25.
  */
@@ -58,6 +60,19 @@ public class SerialPortDevice {
     @Override
     public String toString() {
         return String.format("DEVICE:[serialNumber=%s,location=%s,open=%s,readable=%s]", devInfo.serialNumber, devInfo.location, isDeviceOpen(), isReadable());
+    }
+
+    public void print(String s) throws UnsupportedEncodingException {
+        if (!isDeviceOpen()) {
+            return;
+        }
+        device.setLatencyTimer((byte) 16);
+        byte[] out = s.getBytes("GBK");
+        device.write(out);
+        byte[] cmd_feed = new byte[]{0x0a};
+        device.write(cmd_feed);
+        byte[] cmd_cut = new byte[]{0x1d, 0x56, 0x00};
+        device.write(cmd_cut);
     }
 
     class DeviceReader extends Thread {
