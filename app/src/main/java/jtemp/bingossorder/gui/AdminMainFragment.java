@@ -81,7 +81,5 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
     }
 
     private void startFoodManager() {
-        Intent intent = new Intent(getActivity().getApplicationContext(), AdminFoodManagerActivity.class);
-        getActivity().startActivity(intent);
     }
 }
