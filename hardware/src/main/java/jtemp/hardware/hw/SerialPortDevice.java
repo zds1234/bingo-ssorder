@@ -93,7 +93,7 @@ public class SerialPortDevice {
                 try {
                     Thread.sleep(50);
                     read();
-                    if (System.currentTimeMillis() - lastLoopback >= 1000) {
+                    if (System.currentTimeMillis() - lastLoopback >= 5000) {
                         loopback();
                         lastLoopback = System.currentTimeMillis();
                     }
@@ -131,8 +131,10 @@ public class SerialPortDevice {
         }
 
         private void loopback() {
-//            byte[] data1 = new byte [] {(byte)0xFF};
-//            byte[] data2 = new byte [] {(byte)0x00};
+            byte[] data1 = new byte[]{(byte) 0xFF};
+            device.device.write(data1);
+            byte[] data2 = new byte[]{(byte) 0x00};
+            device.device.write(data2);
         }
     }
 }

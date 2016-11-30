@@ -10,9 +10,6 @@ import java.util.List;
 
 import jtemp.bingossorder.code.ErrorCode;
 import jtemp.bingossorder.code.FoodSpecType;
-import jtemp.bingossorder.entity.Food;
-import jtemp.bingossorder.entity.FoodCategory;
-import jtemp.bingossorder.entity.FoodSpec;
 
 /**
  * Created by ZMS on 2016/11/22.

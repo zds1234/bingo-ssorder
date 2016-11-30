@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.entity.FoodSpec;
 import jtemp.bingossorder.code.FoodSpecType;
-import jtemp.bingossorder.gui.AdminFoodMgrSpecFragment;
 
 /**
  * Created by ZMS on 2016/11/23.

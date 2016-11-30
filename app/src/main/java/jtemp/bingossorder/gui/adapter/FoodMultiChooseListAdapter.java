@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import jtemp.bingossorder.activity.AdminFoodListByCategoryActivity;
 import jtemp.bingossorder.activity.R;
-import jtemp.bingossorder.entity.Food;
 
 /**
  * Created by ZMS on 2016/11/24.

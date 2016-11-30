@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jtemp.bingossorder.activity.AdminFoodManagerActivity;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.hardware.HardwareTestActivity;
