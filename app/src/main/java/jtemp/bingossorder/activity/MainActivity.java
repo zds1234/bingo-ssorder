@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import jtemp.bingossorder.event.AppEvent;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.bingossorder.event.AppEventListener;
@@ -16,6 +19,9 @@ import jtemp.bingossorder.gui.AdFragment;
 import jtemp.bingossorder.gui.MainContentFragment;
 import jtemp.bingossorder.gui.TitleFragment;
 import jtemp.hardware.hw.HardwareCheckThread;
+import jtemp.hardware.hw.SerialPortHardwareManager;
+import jtemp.pay.Pay;
+import jtemp.pay.SemoorPayService;
 
 /**
  * 首页
@@ -31,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements AppEventListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SerialPortHardwareManager.initHardware(getApplicationContext());
+        payConfig();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
@@ -38,9 +46,18 @@ public class MainActivity extends AppCompatActivity implements AppEventListener 
         initFragment();
     }
 
+    private void payConfig() {
+        Map<String, String> params = new HashMap<>();
+        params.put(SemoorPayService.PayParams.baseUrl.name(), "http://dct.semoor.cn/o2o-dm/op.php");
+        params.put(SemoorPayService.PayParams.device_id.name(), "50465");
+        params.put(SemoorPayService.PayParams.secretKey.name(), "504651012002");
+        Pay.SEMOOR.config(params);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+        SerialPortHardwareManager.checkAndOpenHardware();
     }
 
     private void initFragment() {
