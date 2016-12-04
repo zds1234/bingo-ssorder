@@ -8,6 +8,7 @@ import android.view.ContextThemeWrapper;
 import jtemp.bingossorder.activity.AddDurationActivity;
 import jtemp.bingossorder.activity.AddFoodNameActivity;
 import jtemp.bingossorder.activity.AddFoodsActivity;
+import jtemp.bingossorder.activity.AddKindsActivity;
 import jtemp.bingossorder.activity.ManageTabActivity;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.base.BaseActivity;
@@ -40,6 +41,11 @@ public class ActivityModel {
 
     public static void toAddFoodNameActivity(Context context) {
         Intent intent =new Intent(context,AddFoodNameActivity.class);
+        goTo(context,intent);
+    }
+
+    public static void toAddKindsActivity(Context context) {
+        Intent intent =new Intent(context,AddKindsActivity.class);
         goTo(context,intent);
     }
 }

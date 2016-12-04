@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_app_background"
+    android:orientation="vertical"
+    android:padding="@dimen/fragment_kinds_types_padding_20" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/food_name"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/fragment_kinds_types_padding_5"
+                    android:background="@null"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divide" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/single_point_num"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/fragment_kinds_types_padding_5"
+                    android:background="@null"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divide" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/food_list"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/fragment_kinds_types_padding_5"
+                    android:background="@null"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divide" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/food_set_meal"
+                    android:textColor="@color/color_blank"
+                    android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+
+               <jtemp.bingossorder.widget.SwitchView
+                   android:layout_marginLeft="@dimen/manger_kinds_20"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="40dp"
+                   android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divide" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fragment_kinds_types_padding_5"
+                android:layout_marginTop="@dimen/fragment_kinds_types_textsize_16"
+                android:text="@string/food_depend_on"
+                android:textSize="@dimen/fragment_kinds_types_textsize_18"
+                android:textColor="@color/color_bg_gray" />
+
+            <jtemp.bingossorder.widget.AddFoodsListView
+                android:id="@+id/lv_food_depend_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:divider="@null"
+                android:fadingEdge="none"
+                android:listSelector="#00000000" >
+            </jtemp.bingossorder.widget.AddFoodsListView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divide" />
+
+            <TextView
+                android:id="@+id/tv_add_food_specifications_comfirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_40"
+                android:background="@drawable/shape_oval_text_bg_red"
+                android:gravity="center"
+                android:text="@string/food_add"
+                android:textColor="@color/color_app_background"
+                android:textSize="@dimen/fragment_kinds_types_textsize_18" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

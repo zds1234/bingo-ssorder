@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="@dimen/fragment_kinds_types_padding_10"
+        android:paddingRight="@dimen/fragment_kinds_types_padding_10" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/tab_kinds"
+            />
+
+        <TextView
+            android:id="@+id/tv_fragment_kinds_compile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_white_text_bg"
+            android:paddingBottom="@dimen/fragment_kinds_types_padding_5"
+            android:paddingLeft="@dimen/fragment_kinds_types_padding_10"
+            android:paddingRight="@dimen/fragment_kinds_types_padding_10"
+            android:paddingTop="@dimen/fragment_kinds_types_padding_5"
+            android:text="@string/compile" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_app_background"
+         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+		            android:layout_marginLeft="@dimen/fragment_kinds_types_padding_5"
+                    android:layout_marginRight="@dimen/fragment_kinds_types_padding_5"
+                    android:background="@color/color_app_background" >
+                </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_40"
+                android:layout_marginTop="@dimen/fragment_kinds_types_margin_150"
+                android:layout_marginBottom="@dimen/fragment_kinds_types_padding_20"
+                android:layout_marginLeft="@dimen/fragment_kinds_types_texthight_50"
+                android:layout_marginRight="@dimen/fragment_kinds_types_texthight_50"
+                android:background="@drawable/shape_oval_text_bg_red"
+                android:gravity="center"
+                android:text="@string/commit"
+                android:visibility="visible"
+                android:textColor="@color/color_app_background"
+                android:textSize="@dimen/fragment_kinds_types_textsize_18" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

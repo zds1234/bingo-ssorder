@@ -31,4 +31,13 @@
     <string name="save">保存</string>
     <string name="food_name_label">名  称：</string>
     <string name="food_catogry_label">类  别：</string>
+
+    <string name="food_name">菜类名称:</string>
+    <string name="single_point_num">单点限量:</string>
+    <string name="food_list">排	序:</string>
+    <string name="food_set_meal">套餐类</string>
+    <string name="food_add">添加</string>
+    <string name="food_depend_on">依附菜品</string>
+    <string name="compile">编辑</string>
+    <string name="arrive_label">到</string>
 </resources>

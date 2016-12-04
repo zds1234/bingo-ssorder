@@ -36,4 +36,17 @@
     <dimen name="tv_lv_12">12dp</dimen>
 
 
+    <dimen name="fragment_kinds_types_padding_20">20dp</dimen>
+    <dimen name="fragment_kinds_types_padding_10">10dp</dimen>
+    <dimen name="fragment_kinds_types_padding_5">5dp</dimen>
+
+    <dimen name="fragment_kinds_types_textsize_12">12dp</dimen>
+    <dimen name="fragment_kinds_types_textsize_8">8dp</dimen>
+    <dimen name="fragment_kinds_types_textsize_18">18dp</dimen>
+    <dimen name="fragment_kinds_types_textsize_16">16dp</dimen>
+
+    <dimen name="fragment_kinds_types_texthight_50">50dp</dimen>
+    <dimen name="fragment_kinds_types_margin_150">150dp</dimen>
+
+
 </resources>

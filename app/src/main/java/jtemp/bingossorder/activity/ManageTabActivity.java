@@ -1,14 +1,11 @@
 package jtemp.bingossorder.activity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -17,7 +14,6 @@ import java.util.List;
 import jtemp.bingossorder.adapter.MyPagerAdapter;
 import jtemp.bingossorder.base.BaseActivity;
 import jtemp.bingossorder.controller.ManageTabController;
-import jtemp.bingossorder.gui.BaseFragment;
 import jtemp.bingossorder.gui.ManageKindsFragment;
 import jtemp.bingossorder.gui.ManageSizeFragment;
 import jtemp.bingossorder.gui.ManageTabFragment;
@@ -25,7 +21,6 @@ import jtemp.bingossorder.gui.ManageTimeFragment;
 import jtemp.bingossorder.utils.ActivityModel;
 import jtemp.bingossorder.utils.FixViewPagerScroller;
 import jtemp.bingossorder.utils.ViewUtils;
-import jtemp.bingossorder.widget.AddFoodsListView;
 import jtemp.bingossorder.widget.TabLayout;
 
 /**
@@ -143,7 +138,7 @@ public class ManageTabActivity extends BaseActivity implements View.OnClickListe
                 if(currItem==0){
                     ActivityModel.toAddFoodsActivity(this);
                 }else if(currItem==1){
-
+                    ActivityModel.toAddKindsActivity(this);
                 }else if(currItem==2){
                     ActivityModel.toAddFoodNameActivity(this);
                 }else if(currItem==3){
