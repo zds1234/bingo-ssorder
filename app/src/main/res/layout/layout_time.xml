@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+        <LinearLayout 
+            android:id="@+id/layout_time_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <CheckBox
+                android:id="@+id/cb_monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                />
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_mon"
+                android:textColor="@color/color_tv_gray"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <CheckBox
+                android:id="@+id/cb_tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_tue"
+                android:textColor="@color/color_tv_gray"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <CheckBox
+                android:id="@+id/cb_wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_wed"
+                android:textColor="@color/color_tv_gray"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <CheckBox
+                android:id="@+id/cb_thursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                />
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_thu"
+                android:textColor="@color/color_tv_gray"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <CheckBox
+                android:id="@+id/cb_friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_fri"
+                android:textColor="@color/color_tv_gray"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <CheckBox
+                android:id="@+id/cb_saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_sat"
+                android:textColor="@color/color_tv_gray"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+             <CheckBox
+                 android:id="@+id/cb_sunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/fragment_mange_kinds_selector"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+            <TextView
+                android:textColor="@color/color_tv_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/layout_time_sun"
+                android:layout_marginLeft="@dimen/margin_4"
+                />
+        </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

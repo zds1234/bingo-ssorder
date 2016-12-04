@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TabLayout">
+
+    <attr name="title_name" format="string"/>
+
+
+    <attr name="need_divider" format="boolean"/>
+
+    <attr name="src" format="reference"/>
+
+
+</declare-styleable>
+
+</resources>

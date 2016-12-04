@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ScrollView
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:layout_marginLeft="@dimen/manger_kinds_20"
+        android:layout_marginRight="@dimen/manger_kinds_20"
+        android:layout_marginTop="@dimen/manger_kinds_20"
+        android:layout_above="@+id/ll_bottom"
+        android:background="@color/color_white"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginLeft="@dimen/manger_kinds_20"
+            android:layout_marginRight="@dimen/manger_kinds_20"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:textColor="@color/color_tv_gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="类型："
+                android:textSize="@dimen/tv_lv_12"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_kinds"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manage_kinds_25"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_1"
+                android:background="@color/color_divide"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/manger_kinds_8"
+                >
+                <TextView
+                    android:textColor="@color/color_tv_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:text="名 称："
+                    android:textSize="@dimen/tv_lv_12"
+                    />
+                <EditText
+                    android:hint="名称"
+                    android:id="@+id/et_name"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/tv_lv_12"
+                    android:textColor="@color/color_tv_gray"
+                    android:layout_marginLeft="@dimen/manger_kinds_20"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_1"
+                android:background="@color/color_divide"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/manger_kinds_8"
+                >
+                <TextView
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/color_tv_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="英 文："
+                    android:textSize="@dimen/tv_lv_12"
+                    />
+                <EditText
+                    android:layout_marginLeft="@dimen/manger_kinds_20"
+                    android:background="@null"
+                    android:hint="英文名称"
+                    android:layout_width="match_parent"
+                    android:id="@+id/et_eng_name"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_tv_gray"
+                    android:textSize="@dimen/tv_lv_12"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_1"
+                android:background="@color/color_divide"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/manger_kinds_8"
+                >
+                <TextView
+                    android:textColor="@color/color_tv_gray"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="每日上架的时间："
+                    android:textSize="@dimen/tv_lv_12"
+                    />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rl_on_sale_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/manage_kinds_25"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_1"
+                android:background="@color/color_divide"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/manger_kinds_8"
+                >
+                <TextView
+                    android:gravity="center"
+                    android:textColor="@color/color_tv_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="每周上架的时间："
+                    android:textSize="@dimen/tv_lv_12"
+                    android:id="@+id/tv_week_time"
+                    />
+                <include
+                    layout="@layout/layout_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tv_week_time"
+                    ></include>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/manger_kinds_1"
+                android:background="@color/color_divide"
+                />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:id="@+id/cb_recommend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/fragment_mange_kinds_selector"
+                    />
+                <TextView
+                    android:layout_marginLeft="@dimen/manger_kinds_20"
+                    android:text="@string/recommend"
+                    android:textColor="@color/color_tv_gray"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:id="@+id/cb_is_on_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/fragment_mange_kinds_selector"
+                    />
+                <TextView
+                    android:layout_marginLeft="@dimen/manger_kinds_20"
+                    android:text="@string/isOnSaleNow"
+                    android:textColor="@color/color_tv_gray"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_tv_gray"
+                android:gravity="center"
+                android:text="@string/food_pic"
+                />
+            <ImageView
+                android:id="@+id/iv_add_food"
+                android:layout_marginTop="@dimen/manger_kinds_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/iv_add_pic"
+                />
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/layout_time_add_foods"></include>
+
+            <TextView
+                android:id="@+id/tv_commit"
+                style="@style/button_style"
+                android:text="@string/add"
+                android:background="@drawable/bg_red_radius_4"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/manger_kinds_40"
+                android:layout_width="match_parent"
+                android:textSize="@dimen/tv_lv_16"
+                android:textColor="@color/color_white"
+                android:layout_height="@dimen/manger_kinds_40"
+                ></TextView>
+
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:visibility="invisible"
+        android:background="@color/color_white"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ll_bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_single_kind_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:gravity="center"
+                android:textSize="@dimen/tv_lv_16"
+                android:background="@drawable/bg_gray_radius_4"
+                android:layout_marginLeft="@dimen/manger_kinds_20"
+                android:layout_marginRight="@dimen/manager_kinds_10"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/cancel"
+                android:textColor="@color/color_white"
+                android:layout_height="@dimen/manger_kinds_40" />
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:gravity="center"
+                android:textSize="@dimen/tv_lv_16"
+                android:background="@drawable/bg_red_radius_4"
+                android:layout_marginRight="@dimen/manger_kinds_20"
+                android:layout_marginLeft="@dimen/manager_kinds_10"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/commit"
+                android:textColor="@color/color_white"
+                android:layout_height="@dimen/manger_kinds_40" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

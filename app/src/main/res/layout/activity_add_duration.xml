@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/color_white"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_marginTop="@dimen/manger_kinds_40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_tv_gray"
+        android:textSize="@dimen/tv_lv_18"
+        android:gravity="center"
+        android:text="@string/input_time_duration"
+        />
+    <View
+        android:layout_marginLeft="@dimen/manger_kinds_20"
+        android:layout_marginRight="@dimen/manger_kinds_20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/color_divide"
+
+        ></View>
+    <EditText
+        android:id="@+id/et_time_name"
+        android:background="@null"
+        android:gravity="center"
+        android:padding="@dimen/manger_kinds_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_marginTop="@dimen/manager_kinds_10"
+        android:layout_marginLeft="@dimen/manger_kinds_20"
+        android:layout_marginRight="@dimen/manger_kinds_20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/color_divide"
+
+        ></View>
+    <LinearLayout
+        android:layout_marginTop="@dimen/manger_kinds_20"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:gravity="center"
+            android:textSize="@dimen/tv_lv_16"
+            android:background="@drawable/bg_gray_radius_4"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:textColor="@color/color_white"
+            android:layout_height="@dimen/manger_kinds_40" />
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:gravity="center"
+            android:textSize="@dimen/tv_lv_16"
+            android:background="@drawable/bg_red_radius_4"
+            android:layout_marginRight="@dimen/margin_10"
+            android:layout_marginLeft="@dimen/margin_4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/save"
+            android:textColor="@color/color_white"
+            android:layout_height="@dimen/manger_kinds_40" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+    <ImageView
+        android:padding="@dimen/iv_padding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/iv_back"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_centerVertical="true"
+        />
+    <LinearLayout
+        android:id="@+id/ll_to_add"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_yellow_radius_4"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:paddingTop="@dimen/ll_padding_tb"
+        android:paddingBottom="@dimen/ll_padding_tb"
+        android:paddingLeft="@dimen/ll_padding_lr"
+        android:paddingRight="@dimen/ll_padding_lr"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/iv_add"
+            android:layout_gravity="center_vertical"
+            />
+        <TextView
+            android:layout_marginLeft="@dimen/text_margin"
+            android:text="添加"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tv_lv_16"
+            android:layout_gravity="right|center_vertical"
+            android:gravity="center"
+            android:textColor="@color/color_tv_gray"
+
+            ></TextView>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_divide"
+        ></View>
+
+</RelativeLayout>

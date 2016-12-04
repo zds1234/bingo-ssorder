@@ -13,11 +13,7 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
             </intent-filter>
@@ -27,6 +23,18 @@
                 android:resource="@xml/device_filter" />
         </activity>
         <activity android:name=".AdminActivity" />
+        <activity android:name=".ManageTabActivity" android:windowSoftInputMode="adjustNothing"  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".AddFoodsActivity" android:windowSoftInputMode="adjustNothing"
+            android:theme="@style/DialogStyle"
+            ></activity>
+        <activity android:name=".AddDurationActivity" android:windowSoftInputMode="adjustNothing" android:theme="@style/DialogStyle"></activity>
     </application>
 
 </manifest>

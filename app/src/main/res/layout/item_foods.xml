@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <jtemp.bingossorder.widget.CircleImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/food"
+        android:id="@+id/iv_food"
+        android:layout_centerHorizontal="true"
+        />
+    <CheckBox
+        android:id="@+id/cb_select"
+        android:visibility="gone"
+        android:layout_gravity="center_vertical"
+        android:button="@drawable/fragment_mange_kinds_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/margin_4"
+        />
+    <TextView
+        android:layout_below="@+id/iv_food"
+        android:layout_marginTop="@dimen/text_margin"
+        android:id="@+id/tv_food_name"
+        android:gravity="center"
+        android:text="洪门大虾"
+        android:textColor="@color/color_tv_gray"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

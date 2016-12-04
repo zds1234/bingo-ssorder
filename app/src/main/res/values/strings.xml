@@ -3,4 +3,30 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tab_manage">菜品管理</string>
+    <string name="tab_kinds">菜品分类</string>
+    <string name="tab_size">菜品规格</string>
+    <string name="tab_time">上架时间</string>
+
+    <string name="all">全部</string>
+    <string name="on_sale">已上架</string>
+    <string name="off_sale">未上架</string>
+    <string name="recommend">推荐</string>
+    <string name="isOnSaleNow">是否上架</string>
+    <string name="food_pic">图   像:</string>
+    <string name="add">添加</string>
+
+    <string name="layout_time_mon">周一</string>
+    <string name="layout_time_tue">周二</string>
+    <string name="layout_time_wed">周三</string>
+    <string name="layout_time_thu">周四</string>
+    <string name="layout_time_fri">周五</string>
+    <string name="layout_time_sat">周六</string>
+    <string name="layout_time_sun">周日</string>
+
+    <string name="cancel">取消</string>
+    <string name="commit">确定</string>
+    <string name="input_time_duration">请输入时段名称</string>
+    <string name="save">保存</string>
 </resources>
