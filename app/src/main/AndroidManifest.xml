@@ -35,6 +35,9 @@
             android:theme="@style/DialogStyle"
             ></activity>
         <activity android:name=".AddDurationActivity" android:windowSoftInputMode="adjustNothing" android:theme="@style/DialogStyle"></activity>
+        <activity android:name=".AddFoodNameActivity"
+            android:theme="@style/DialogStyle"
+            />
     </application>
 
 </manifest>

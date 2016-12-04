@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/manger_kinds_8"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tv_lv_16"
+            android:text="@string/food_name_label"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/manger_kinds_20"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/dialog_input_food_name_et"
+            android:background="@null"
+            android:padding="@dimen/manger_kinds_20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/manger_kinds_1"
+        android:background="@color/color_divide"
+        android:layout_marginLeft="@dimen/manager_kinds_10"
+        android:layout_marginRight="@dimen/manager_kinds_10"
+        android:layout_marginTop="@dimen/manger_kinds_20"
+        />
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/manage_kinds_25"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/tv_lv_16"
+            android:text="@string/food_catogry_label"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/manger_kinds_20"
+            android:gravity="center_vertical"
+            android:textColor="@color/black"
+            />
+        <ListView 
+            android:id="@+id/add_food_dialog_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:divider="@null"
+            ></ListView>
+        
+    </LinearLayout>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/manger_kinds_1"
+        android:background="@color/color_divide"
+        android:layout_marginLeft="@dimen/manager_kinds_10"
+        android:layout_marginRight="@dimen/manager_kinds_10"
+        android:layout_marginTop="@dimen/manger_kinds_20"
+        />
+    <LinearLayout
+        android:layout_marginTop="@dimen/manage_kinds_25"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:gravity="center"
+            android:textSize="@dimen/tv_lv_16"
+            android:background="@drawable/bg_gray_radius_4"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:textColor="@color/color_white"
+            android:layout_height="@dimen/manger_kinds_40" />
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:gravity="center"
+            android:textSize="@dimen/tv_lv_16"
+            android:background="@drawable/bg_red_radius_4"
+            android:layout_marginRight="@dimen/margin_10"
+            android:layout_marginLeft="@dimen/margin_4"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/save"
+            android:textColor="@color/color_white"
+            android:layout_height="@dimen/manger_kinds_40" />
+
+    </LinearLayout>
+    
+</LinearLayout>

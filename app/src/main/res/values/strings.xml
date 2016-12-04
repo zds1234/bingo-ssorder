@@ -29,4 +29,6 @@
     <string name="commit">确定</string>
     <string name="input_time_duration">请输入时段名称</string>
     <string name="save">保存</string>
+    <string name="food_name_label">名  称：</string>
+    <string name="food_catogry_label">类  别：</string>
 </resources>

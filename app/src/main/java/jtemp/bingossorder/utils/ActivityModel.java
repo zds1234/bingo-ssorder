@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.ContextThemeWrapper;
 
 import jtemp.bingossorder.activity.AddDurationActivity;
+import jtemp.bingossorder.activity.AddFoodNameActivity;
 import jtemp.bingossorder.activity.AddFoodsActivity;
 import jtemp.bingossorder.activity.ManageTabActivity;
 import jtemp.bingossorder.activity.R;
@@ -35,5 +36,10 @@ public class ActivityModel {
         goTo(context,intent);
 
 
+    }
+
+    public static void toAddFoodNameActivity(Context context) {
+        Intent intent =new Intent(context,AddFoodNameActivity.class);
+        goTo(context,intent);
     }
 }

@@ -145,7 +145,7 @@ public class ManageTabActivity extends BaseActivity implements View.OnClickListe
                 }else if(currItem==1){
 
                 }else if(currItem==2){
-
+                    ActivityModel.toAddFoodNameActivity(this);
                 }else if(currItem==3){
                     ActivityModel.toAddTimeDuringActivity(this);
                 }
