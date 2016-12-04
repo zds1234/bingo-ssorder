@@ -99,6 +99,7 @@ public class MyRecyclerAdapter extends
 				@Override
 				public void onClick(View v) {
 					removeItem(position);
+					notifyDataSetChanged();
 				}
 			});
 		}

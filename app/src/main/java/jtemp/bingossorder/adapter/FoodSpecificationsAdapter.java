@@ -67,17 +67,19 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 			viewHolder.layoutManager = new FullyGridLayoutManager(context, 3);
 			viewHolder.recyclerView.setLayoutManager(viewHolder.layoutManager);
 //			viewHolder.decoration = new DividerGridItemDecoration(context);
-
+			viewHolder.recyclerAdapter.isFood();
+			viewHolder.recyclerAdapter.compileContent();
 			viewHolder.recyclerView.setAdapter(viewHolder.recyclerAdapter);
 //			viewHolder.recyclerView.addItemDecoration(viewHolder.decoration);
 			viewHolder.recyclerAdapter.setOnItemClickListener(this);
 			convertView.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
+			viewHolder.recyclerAdapter.isFood();
+			viewHolder.recyclerAdapter.compileContent();
+			viewHolder.recyclerAdapter.notifyDataSetChanged();
 		}
-		viewHolder.recyclerAdapter.isFood();
-		viewHolder.recyclerAdapter.compileContent();
-		viewHolder.recyclerAdapter.notifyDataSetChanged();
+
 		return convertView;
 	}
 
