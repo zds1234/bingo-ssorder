@@ -7,6 +7,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,13 +20,13 @@ import android.widget.TextView;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.adapter.MyRecyclerAdapter;
 import jtemp.bingossorder.utils.DividerGridItemDecoration;
-import jtemp.bingossorder.utils.FullyGridLayoutManager;
+import jtemp.bingossorder.widget.xrecyclerview.XRecyclerView;
 
 
 public class ManageKindsFragment extends BaseFragment implements OnClickListener {
 	
 	private View view;
-	private RecyclerView recyclerView;
+	private XRecyclerView recyclerView;
 	private TextView tv_fragment_kinds_compile,tv_confirm;
 	private MyRecyclerAdapter recycleAdapter;
 	private List<String> mDatas;
@@ -53,17 +54,20 @@ public class ManageKindsFragment extends BaseFragment implements OnClickListener
 	private void init() {
 		// TODO Auto-generated method stub
 		tv_fragment_kinds_compile = (TextView) view.findViewById(R.id.tv_fragment_kinds_compile);
-		tv_confirm = (TextView) view.findViewById(R.id.tv_confirm);
+//		tv_confirm = (TextView) view.findViewById(R.id.tv_confirm);
 		tv_fragment_kinds_compile.setOnClickListener(this);
-		tv_confirm.setOnClickListener(this);
+//		tv_confirm.setOnClickListener(this);
 
-		recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+		recyclerView = (XRecyclerView) view.findViewById(R.id.recyclerView);
 		recycleAdapter=new MyRecyclerAdapter(getActivity(),mDatas);
-		FullyGridLayoutManager layoutManager = new FullyGridLayoutManager(getActivity(), 3);
-		recyclerView.addItemDecoration(new DividerGridItemDecoration(getActivity()));
+		GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
+//		recyclerView.addItemDecoration(new DividerGridItemDecoration(getActivity()));
 		recyclerView.setLayoutManager(layoutManager);
-		recyclerView.setAdapter(recycleAdapter);
 		recyclerView.setItemAnimator(new DefaultItemAnimator());
+		View v =getActivity().getLayoutInflater().inflate(R.layout.layout_tv_confirm,null);
+		recyclerView.addFootView(v);
+		recyclerView.setPullRefreshEnabled(false);
+		recyclerView.setAdapter(recycleAdapter);
 
 		recycleAdapter.setOnItemClickListener(new MyRecyclerAdapter.OnItemClickListener() {
 			

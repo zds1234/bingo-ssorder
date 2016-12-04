@@ -32,40 +32,10 @@
             android:text="@string/compile" />
     </RelativeLayout>
 
-    <ScrollView
+    <jtemp.bingossorder.widget.xrecyclerview.XRecyclerView
+        android:id="@+id/recyclerView"
+        android:background="@color/color_white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_app_background"
-         >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-		            android:layout_marginLeft="@dimen/fragment_kinds_types_padding_5"
-                    android:layout_marginRight="@dimen/fragment_kinds_types_padding_5"
-                    android:background="@color/color_app_background" >
-                </android.support.v7.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/tv_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/manger_kinds_40"
-                android:layout_marginTop="@dimen/fragment_kinds_types_margin_150"
-                android:layout_marginBottom="@dimen/fragment_kinds_types_padding_20"
-                android:layout_marginLeft="@dimen/fragment_kinds_types_texthight_50"
-                android:layout_marginRight="@dimen/fragment_kinds_types_texthight_50"
-                android:background="@drawable/shape_oval_text_bg_red"
-                android:gravity="center"
-                android:text="@string/commit"
-                android:visibility="visible"
-                android:textColor="@color/color_app_background"
-                android:textSize="@dimen/fragment_kinds_types_textsize_18" />
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="match_parent"></jtemp.bingossorder.widget.xrecyclerview.XRecyclerView>
 
 </LinearLayout>

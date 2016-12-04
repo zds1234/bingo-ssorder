@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.State;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -164,7 +165,7 @@ public class DividerGridItemDecoration extends RecyclerView.ItemDecoration
 		if (isLastRaw(parent, itemPosition, spanCount, childCount))//  ��������һ�У�����Ҫ���Ƶײ�
 		{
 //			outRect.set(5, 20, 5, 10);
-			outRect.set(5, 20, mDivider.getIntrinsicWidth(), 10);
+			outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
 		} else if (isLastColum(parent, itemPosition, spanCount, childCount))//��������һ�У�����Ҫ�����ұ�
 		{
 //			outRect.set(5, 20, 5, 10);

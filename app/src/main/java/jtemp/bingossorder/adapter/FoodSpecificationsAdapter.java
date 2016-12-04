@@ -66,10 +66,10 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 			viewHolder.recyclerAdapter = new MyRecyclerAdapter(context, mDatas);
 			viewHolder.layoutManager = new FullyGridLayoutManager(context, 3);
 			viewHolder.recyclerView.setLayoutManager(viewHolder.layoutManager);
-			viewHolder.decoration = new DividerGridItemDecoration(context);
+//			viewHolder.decoration = new DividerGridItemDecoration(context);
 
 			viewHolder.recyclerView.setAdapter(viewHolder.recyclerAdapter);
-			viewHolder.recyclerView.addItemDecoration(viewHolder.decoration);
+//			viewHolder.recyclerView.addItemDecoration(viewHolder.decoration);
 			viewHolder.recyclerAdapter.setOnItemClickListener(this);
 			convertView.setTag(viewHolder);
 		} else {
@@ -88,8 +88,10 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 
 		MyRecyclerAdapter recyclerAdapter;
 		FullyGridLayoutManager layoutManager;
-		DividerGridItemDecoration decoration;
+//		DividerGridItemDecoration decoration;
 	}
+
+
 
 	@Override
 	public void onClick(int position) {

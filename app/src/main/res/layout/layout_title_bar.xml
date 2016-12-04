@@ -7,7 +7,7 @@
     <ImageView
         android:padding="@dimen/iv_padding"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/back_height"
         android:src="@mipmap/iv_back"
         android:layout_marginLeft="@dimen/margin_10"
         android:layout_centerVertical="true"
