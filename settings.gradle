@@ -1,1 +1,1 @@
-include ':app', ':edk', ':hardware'
+include ':app', ':edk', ':hardware', ':pay', ':utils'

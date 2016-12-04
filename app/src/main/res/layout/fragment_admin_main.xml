@@ -89,6 +89,12 @@
             android:layout_height="wrap_content"
             android:text="硬件测试" />
 
+        <Button
+            android:id="@+id/pay_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付测试" />
+
     </LinearLayout>
 
 

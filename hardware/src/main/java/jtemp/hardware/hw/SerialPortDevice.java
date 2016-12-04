@@ -66,6 +66,9 @@ public class SerialPortDevice {
         if (!isDeviceOpen()) {
             return;
         }
+        if(isReadable()) {
+            return;
+        }
         device.setLatencyTimer((byte) 16);
         byte[] out = s.getBytes("GBK");
         device.write(out);
@@ -131,10 +134,10 @@ public class SerialPortDevice {
         }
 
         private void loopback() {
-            byte[] data1 = new byte[]{(byte) 0xFF};
-            device.device.write(data1);
-            byte[] data2 = new byte[]{(byte) 0x00};
-            device.device.write(data2);
+//            byte[] data1 = new byte[]{(byte) 0xFF};
+//            device.device.write(data1);
+//            byte[] data2 = new byte[]{(byte) 0x00};
+//            device.device.write(data2);
         }
     }
 }

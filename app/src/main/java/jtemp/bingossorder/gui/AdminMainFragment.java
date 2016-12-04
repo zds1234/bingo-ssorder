@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import jtemp.bingossorder.activity.R;
 import jtemp.bingossorder.event.AppEventHandler;
 import jtemp.hardware.HardwareTestActivity;
+import jtemp.pay.activity.PayTestActivity;
 
 /**
  * 管理首页
@@ -44,7 +45,8 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
                     R.id.admin_main_button6,
                     R.id.admin_main_button7,
                     R.id.admin_main_button8,
-                    R.id.hardware_test
+                    R.id.hardware_test,
+                    R.id.pay_test
             }
     )
     @Override
@@ -70,9 +72,17 @@ public class AdminMainFragment extends Fragment implements View.OnClickListener 
             case R.id.hardware_test:
                 startHardwareTest();
                 break;
+            case R.id.pay_test:
+                startPayTest();
+                break;
             default:
                 break;
         }
+    }
+
+    private void startPayTest() {
+        Intent intent = new Intent(getActivity().getApplicationContext(), PayTestActivity.class);
+        getActivity().startActivity(intent);
     }
 
     private void startHardwareTest() {
