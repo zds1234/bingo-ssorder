@@ -22,7 +22,6 @@ public class MyRecyclerAdapter extends
 
 	private List<String> mDatas;
 	private Context mContext;
-	private LayoutInflater inflater;
 	private OnItemClickListener mOnItemClickListener;
 	private boolean isShow = false;
 	private boolean isFood = false;
@@ -38,7 +37,6 @@ public class MyRecyclerAdapter extends
 	public MyRecyclerAdapter(Context context, List<String> datas){
 		this.mContext=context;
 		this.mDatas=datas;
-		inflater=LayoutInflater.from(mContext);
 	}
 	
 	@Override
@@ -71,20 +69,20 @@ public class MyRecyclerAdapter extends
 		// TODO Auto-generated method stub
 //		holder.tv.setText(mDatas.get(position));
 //		holder.tv.setText(mDatas.get(position));
-		if (isFood) {
-			holder.tv_fragment_recycle_item.setVisibility(View.GONE);
-		}else{
-//			if (isFood) {
-//			}
-			holder.tv_fragment_recycle_item.setVisibility(View.GONE);
-		}
+//		if (isFood) {
+//			holder.tv_fragment_recycle_item.setVisibility(View.GONE);
+//		}else{
+////			if (isFood) {
+////			}
+//			holder.tv_fragment_recycle_item.setVisibility(View.GONE);
+//		}
 		
 		holder.et_fragment_recycle_item.setText((mDatas.get(position)));
-		if (isShow) {
-			holder.iv_delete.setVisibility(View.VISIBLE);
-		}else{
-			holder.iv_delete.setVisibility(View.GONE);
-		}
+//		if (isShow) {
+//			holder.iv_delete.setVisibility(View.VISIBLE);
+//		}else{
+//			holder.iv_delete.setVisibility(View.GONE);
+//		}
 		if (mOnItemClickListener != null) {
 			
 			holder.itemView.setOnClickListener(new OnClickListener() {
@@ -108,7 +106,7 @@ public class MyRecyclerAdapter extends
 	@Override
 	public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		// TODO Auto-generated method stub
-		View view = inflater.inflate(R.layout.item_fragment_recycle, parent, false);
+		View view = LayoutInflater.from(mContext).inflate(R.layout.item_fragment_recycle, parent, false);
 		MyViewHolder holder = new MyViewHolder(view);
 		return holder;
 	}

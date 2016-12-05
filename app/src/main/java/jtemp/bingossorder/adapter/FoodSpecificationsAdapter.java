@@ -3,6 +3,7 @@ package jtemp.bingossorder.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,12 +24,10 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 
 	private List<String> mDatas;
 	private Context context;
-	private LayoutInflater inflater;
 
 	public FoodSpecificationsAdapter(List<String> mDatas, Context context) {
 		this.mDatas = mDatas;
 		this.context = context;
-		inflater = LayoutInflater.from(context);
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 		ViewHolder viewHolder = null;
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
-			convertView = inflater.inflate(
+			convertView = LayoutInflater.from(context).inflate(
 					R.layout.item_adapter_fragment_specifications, null);
 			viewHolder.tv_specifications_name = (TextView) convertView
 					.findViewById(R.id.tv_specifications_name);
@@ -64,19 +63,20 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 			viewHolder.recyclerView = (RecyclerView) convertView
 					.findViewById(R.id.recyclerView);
 			viewHolder.recyclerAdapter = new MyRecyclerAdapter(context, mDatas);
-			viewHolder.layoutManager = new FullyGridLayoutManager(context, 3);
+			viewHolder.layoutManager = new GridLayoutManager(context, 3);
 			viewHolder.recyclerView.setLayoutManager(viewHolder.layoutManager);
 //			viewHolder.decoration = new DividerGridItemDecoration(context);
-			viewHolder.recyclerAdapter.isFood();
-			viewHolder.recyclerAdapter.compileContent();
+//			viewHolder.recyclerAdapter.isFood();
+//			viewHolder.recyclerAdapter.compileContent();
 			viewHolder.recyclerView.setAdapter(viewHolder.recyclerAdapter);
-//			viewHolder.recyclerView.addItemDecoration(viewHolder.decoration);
 			viewHolder.recyclerAdapter.setOnItemClickListener(this);
+//			viewHolder.recyclerView.addItemDecoration(viewHolder.decoration);
 			convertView.setTag(viewHolder);
-		} else {
+		}
+		else {
 			viewHolder = (ViewHolder) convertView.getTag();
-			viewHolder.recyclerAdapter.isFood();
-			viewHolder.recyclerAdapter.compileContent();
+//			viewHolder.recyclerAdapter.isFood();
+//			viewHolder.recyclerAdapter.compileContent();
 			viewHolder.recyclerAdapter.notifyDataSetChanged();
 		}
 
@@ -89,7 +89,7 @@ public class FoodSpecificationsAdapter extends BaseAdapter implements
 		RecyclerView recyclerView;
 
 		MyRecyclerAdapter recyclerAdapter;
-		FullyGridLayoutManager layoutManager;
+		GridLayoutManager layoutManager;
 //		DividerGridItemDecoration decoration;
 	}
 

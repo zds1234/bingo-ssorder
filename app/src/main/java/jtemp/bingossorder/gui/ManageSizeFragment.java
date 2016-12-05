@@ -37,7 +37,6 @@ public class ManageSizeFragment extends BaseFragment implements OnClickListener{
 		initdate();
 		foodSpecificationsAdapter = new FoodSpecificationsAdapter(mDates, getActivity());
 		lv_specifications.setAdapter(foodSpecificationsAdapter);
-		foodSpecificationsAdapter.notifyDataSetChanged();
 	}
 	
 	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:paddingLeft="@dimen/fragment_kinds_types_padding_10"
     android:paddingRight="@dimen/fragment_kinds_types_padding_10"
     android:background="@color/color_app_background"
@@ -18,14 +18,19 @@
             android:layout_centerVertical="true"
             android:text="@string/food_name_label"
             android:textColor="@color/color_blank"
-            android:textSize="@dimen/fragment_kinds_types_textsize_16" />
+            android:textSize="@dimen/tv_lv_16" />
 
         <ImageView
             android:id="@+id/iv_specifications_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/iv_add_kinds" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/iv_add_kinds"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/imageview_label"
+            />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
