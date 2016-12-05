@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 import com.eunut.xutils.util.LogUtil;
 
+import java.util.Collections;
 import java.util.List;
 
 import jtemp.bingossorder.activity.R;
+import jtemp.bingossorder.interfaces.ItemDragHelperCallback;
 import jtemp.bingossorder.interfaces.RecycleViewListener;
 import jtemp.bingossorder.model.Foods;
 import jtemp.bingossorder.model.SaleTime;
@@ -27,7 +29,7 @@ import jtemp.bingossorder.widget.CircleImageView;
 /**
  * Created by y66676 on 2016/4/19.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener,ItemDragHelperCallback.ItemTouchHelperAdapter {
     private Context context;
     private List<? extends JsonImp> list;
     private RecycleViewListener listener;
@@ -49,6 +51,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
     public RecyclerAdapter(Context context){
         this.context = context;
+    }
+    @Override
+    public void onItemMove(int fromPosition, int toPosition) {
+        Collections.swap(list, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+    @Override
+    public void onItemDismiss(int position) {
+        list.remove(position);
+        notifyItemRemoved(position);
     }
 
 
